@@ -25,7 +25,7 @@ export default function VietnamInteractiveMap() {
     {
       id: 'central',
       name: 'Miền Trung',
-      position: { x: 58, y: 40 },
+      position: { x: 55, y: 40 },
       color: '#FF6B35',
       forces: [
         { name: 'Nông dân', icon: Users, fact: 'Lực lượng cơ bản của cách mạng' },
@@ -64,7 +64,7 @@ export default function VietnamInteractiveMap() {
     {
       id: 'mekong',
       name: 'Đồng bằng sông Cửu Long',
-      position: { x: 47, y: 80 },
+      position: { x: 48, y: 80 },
       color: '#FF9800',
       forces: [
         { name: 'Nông dân', icon: Users, fact: 'Sản xuất lúa gạo chủ yếu' },
@@ -77,7 +77,7 @@ export default function VietnamInteractiveMap() {
     {
       id: 'coastal',
       name: 'Duyên hải Nam Trung Bộ',
-      position: { x: 71, y: 62 },
+      position: { x: 71, y: 65 },
       color: '#2196F3',
       forces: [
         { name: 'Ngư dân', icon: Globe, fact: 'Đánh bắt hải sản xa bờ' },
@@ -94,36 +94,38 @@ export default function VietnamInteractiveMap() {
     <div className="w-full h-full">
       {/* Interactive Map */}
       <div className="relative h-full bg-gradient-to-br from-blue-50 to-green-50 rounded-2xl p-8 mb-8 overflow-hidden">
-        <div className="relative w-full h-[1200px] rounded-xl overflow-hidden">
-          {/* Vietnam Map Background - Full Width and Height */}
-          <Image 
-            src="/vietnam-map-1.jpg" 
-            alt="Bản đồ Việt Nam" 
-            fill
-            className="object-cover"
-            priority
-          />
-          {/* Clean overlay to make pins visible */}
-          <div className="absolute inset-0 bg-gradient-to-br from-black/10 via-transparent to-black/20"></div>
-          
-          {/* Decorative Elements */}
-          <div className="absolute top-6 left-6 text-3xl font-bold text-white drop-shadow-lg">
-            VIỆT NAM
-          </div>
-          <div className="absolute bottom-6 right-6 text-lg text-white drop-shadow-lg font-medium">
-            Khối đại đoàn kết toàn dân tộc
-          </div>
-          
-          {/* Region Pins */}
-          {regions.map((region) => (
-            <motion.button
-              key={region.id}
-              className="absolute transform -translate-x-1/2 -translate-y-1/2 group"
-              style={{ left: `${region.position.x}%`, top: `${region.position.y}%` }}
-              onClick={() => setSelectedRegion(region.id)}
-              whileHover={{ scale: 1.3 }}
-              whileTap={{ scale: 0.9 }}
-            >
+        <div className="relative w-full h-[1200px] rounded-xl overflow-hidden flex justify-center items-center">
+          {/* Vietnam Map Background - Fixed Non-Responsive */}
+          <div className="relative" style={{ width: '800px', height: '1000px' }}>
+            <Image 
+              src="/vietnam-map-1.jpg" 
+              alt="Bản đồ Việt Nam" 
+              width={800}
+              height={1000}
+              className="w-full h-full"
+              priority
+            />
+            {/* Clean overlay to make pins visible */}
+            <div className="absolute inset-0 bg-gradient-to-br from-black/10 via-transparent to-black/20"></div>
+            
+            {/* Decorative Elements */}
+            <div className="absolute top-6 left-6 text-3xl font-bold text-white drop-shadow-lg">
+              VIỆT NAM
+            </div>
+            <div className="absolute bottom-6 right-6 text-lg text-white drop-shadow-lg font-medium">
+              Khối đại đoàn kết toàn dân tộc
+            </div>
+            
+            {/* Region Pins */}
+            {regions.map((region) => (
+              <motion.button
+                key={region.id}
+                className="absolute transform -translate-x-1/2 -translate-y-1/2 group"
+                style={{ left: `${region.position.x}%`, top: `${region.position.y}%` }}
+                onClick={() => setSelectedRegion(region.id)}
+                whileHover={{ scale: 1.3 }}
+                whileTap={{ scale: 0.9 }}
+              >
               <div className="relative">
                 {/* Pin Shadow */}
                 <div className="absolute top-1 left-1 w-10 h-10 bg-black/20 rounded-full blur-sm"></div>
@@ -153,6 +155,7 @@ export default function VietnamInteractiveMap() {
               </div>
             </motion.button>
           ))}
+          </div>
         </div>
       </div>
 
