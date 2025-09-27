@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import AIChatBubble from "@/components/AIChatBubble";
 import LayoutWrapper from "@/components/LayoutWrapper";
 import ProgressBar from "@/components/ProgressBar";
 

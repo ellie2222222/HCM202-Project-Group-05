@@ -128,8 +128,8 @@ export default function DieuKienSection() {
             <Users className="w-20 h-20 mx-auto mb-6" />
             <h3 className="text-2xl font-bold mb-6">Hồ Chí Minh</h3>
             <p className="text-xl italic leading-relaxed">
-              "Dễ trăm lần không dân cũng chịu<br />
-              Khó vạn lần dân liệu cũng xong."
+              &ldquo;Dễ trăm lần không dân cũng chịu<br />
+              Khó vạn lần dân liệu cũng xong.&rdquo;
             </p>
           </div>
         </motion.div>
@@ -196,7 +196,7 @@ export default function DieuKienSection() {
           className="bg-gray-50 p-8 rounded-lg"
         >
           <h3 className="text-2xl font-bold text-center text-[#D32F2F] mb-8">
-            "Tổ chức của bạn có đoàn kết thực sự?"
+            &ldquo;Tổ chức của bạn có đoàn kết thực sự?&rdquo;
           </h3>
           
             {!showQuizResult ? (
@@ -211,7 +211,7 @@ export default function DieuKienSection() {
                             type="radio"
                             name={`question-${qIndex}`}
                             value={oIndex}
-                            onChange={(e) => {
+                            onChange={() => {
                               const newAnswers = [...quizAnswers];
                               newAnswers[qIndex] = oIndex;
                               setQuizAnswers(newAnswers);

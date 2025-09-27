@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Flag } from 'lucide-react';
 
 interface HeroSectionProps {
   onExploreClick: () => void;
@@ -51,8 +50,8 @@ export default function HeroSection({ onExploreClick }: HeroSectionProps) {
         >
           <div className="bg-black bg-opacity-50 backdrop-blur-sm rounded-xl p-8 max-w-4xl mx-auto border border-[#FFD700] border-opacity-40 text-center">
             <p className="text-lg md:text-xl text-[#FFD700] font-semibold italic leading-relaxed mb-4">
-              "Đoàn kết, đoàn kết, đại đoàn kết<br />
-              <span className="text-white">Thành công, thành công, đại thành công."</span>
+              &ldquo;Đoàn kết, đoàn kết, đại đoàn kết<br />
+              <span className="text-white">Thành công, thành công, đại thành công.&rdquo;</span>
             </p>
             <p className="text-base text-white opacity-90">
               — Hồ Chí Minh

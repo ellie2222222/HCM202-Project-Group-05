@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Factory, Wheat, Brain, Cross, Briefcase, Globe, Users } from 'lucide-react';
+import { Factory, Wheat, Brain, Cross, Globe, Users } from 'lucide-react';
 import VietnamInteractiveMap from './VietnamInteractiveMap';
 
 export default function LucLuongSection() {

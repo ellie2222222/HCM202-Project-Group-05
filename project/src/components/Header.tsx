@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+
 interface HeaderProps {
   onNavClick: (sectionId: string) => void;
 }
@@ -11,9 +13,11 @@ export default function Header({ onNavClick }: HeaderProps) {
         <div className="flex justify-between items-center h-20">
           <div className="flex items-center">
             <div className="flex items-center space-x-3">
-              <img 
+              <Image 
                 src="/Flag_of_Vietnam.svg" 
                 alt="Lá Cờ Việt Nam" 
+                width={48}
+                height={48}
                 className="w-12 h-12"
               />
             </div>

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Maximize2, X, MapPin, Users, Building, Factory, GraduationCap, Heart, Globe } from 'lucide-react';
+import Image from 'next/image';
 
 export default function VietnamMapGallery() {
   const [selectedMap, setSelectedMap] = useState<number | null>(null);
@@ -103,9 +104,11 @@ export default function VietnamMapGallery() {
             className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
           >
             <div className="relative">
-              <img
+              <Image
                 src={map.image}
                 alt={map.title}
+                width={400}
+                height={192}
                 className="w-full h-48 object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
@@ -149,9 +152,11 @@ export default function VietnamMapGallery() {
             >
               <X className="w-6 h-6" />
             </button>
-            <img
+            <Image
               src={maps[selectedMap - 1].image}
               alt={maps[selectedMap - 1].title}
+              width={800}
+              height={600}
               className="max-w-full max-h-full object-contain rounded-lg"
             />
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 rounded-b-lg">

@@ -1,6 +1,5 @@
 'use client';
 
-import { Flag } from 'lucide-react';
 
 export default function Footer() {
   return (

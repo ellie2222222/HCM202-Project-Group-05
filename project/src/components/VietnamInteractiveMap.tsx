@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MapPin, Factory, Users, GraduationCap, Building, Heart, Globe, X } from 'lucide-react';
+import Image from 'next/image';
 
 export default function VietnamInteractiveMap() {
   const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
@@ -95,10 +96,12 @@ export default function VietnamInteractiveMap() {
       <div className="relative h-full bg-gradient-to-br from-blue-50 to-green-50 rounded-2xl p-8 mb-8 overflow-hidden">
         <div className="relative w-full h-[1200px] rounded-xl overflow-hidden">
           {/* Vietnam Map Background - Full Width and Height */}
-          <img 
+          <Image 
             src="/vietnam-map-1.jpg" 
             alt="Bản đồ Việt Nam" 
-            className="absolute inset-0 w-full h-full"
+            fill
+            className="object-cover"
+            priority
           />
           {/* Clean overlay to make pins visible */}
           <div className="absolute inset-0 bg-gradient-to-br from-black/10 via-transparent to-black/20"></div>
