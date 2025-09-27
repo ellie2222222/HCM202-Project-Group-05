@@ -1,26 +1,179 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #ffffff;
+  color: #171717;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  width: 100%;
+  min-height: 100vh;
+  -ms-overflow-style: none;
+}
+
+/* Hide scrollbar but keep functionality */
+::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  scrollbar-width: none;
+}
+
+
+/* React Chrono Timeline Custom Styles */
+.custom-chrono-card {
+  border: 2px solid #D32F2F !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+  background: white !important;
+  min-height: 300px !important;
+}
+
+.custom-chrono-title {
+  color: #D32F2F !important;
+  font-weight: bold !important;
+  font-size: 1.2rem !important;
+}
+
+.custom-chrono-subtitle {
+  color: #666 !important;
+  font-weight: 600 !important;
+  font-size: 1rem !important;
+}
+
+.custom-chrono-text {
+  color: #333 !important;
+  line-height: 1.6 !important;
+  font-size: 0.9rem !important;
+}
+
+.custom-chrono-main-title {
+  color: #D32F2F !important;
+  font-weight: bold !important;
+  font-size: 1.1rem !important;
+}
+
+.custom-chrono-media {
+  border-radius: 8px !important;
+}
+
+.custom-chrono-controls {
+  display: none !important;
+}
+
+/* Timeline line and dots with alternating backgrounds */
+.react-chrono-timeline .timeline-item-content::before {
+  border-left: 3px solid #D32F2F !important;
+}
+
+.react-chrono-timeline .timeline-item-content .timeline-item-content-marker {
+  background: #D32F2F !important;
+  border: 3px solid white !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+  width: 20px !important;
+  height: 20px !important;
+}
+
+/* Alternating card backgrounds */
+.react-chrono-timeline .timeline-item:nth-child(odd) .timeline-item-content .timeline-item-content-marker {
+  background: #D32F2F !important;
+}
+
+.react-chrono-timeline .timeline-item:nth-child(even) .timeline-item-content .timeline-item-content-marker {
+  background: #FFD700 !important;
+}
+
+/* Timeline line gradient */
+.react-chrono-timeline .timeline-item-content::before {
+  background: linear-gradient(to bottom, #D32F2F, #FFD700) !important;
+  border: none !important;
+  width: 3px !important;
+}
+
+/* Card positioning for alternating layout */
+.react-chrono-timeline .timeline-item:nth-child(odd) .timeline-item-content {
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+
+.react-chrono-timeline .timeline-item:nth-child(even) .timeline-item-content {
+  margin-left: auto !important;
+  margin-right: 0 !important;
+}
+
+/* Hide timeline controls completely */
+.react-chrono-timeline .timeline-controls {
+  display: none !important;
+}
+
+.react-chrono-timeline .timeline-controls-container {
+  display: none !important;
+}
+
+/* Hide React Chrono toolbar completely */
+.react-chrono-timeline .timeline-toolbar {
+  display: none !important;
+}
+
+.react-chrono-timeline .timeline-toolbar-container {
+  display: none !important;
+}
+
+/* Hide any search, jump, layout, density controls */
+.react-chrono-timeline .timeline-search,
+.react-chrono-timeline .timeline-jump,
+.react-chrono-timeline .timeline-layout,
+.react-chrono-timeline .timeline-density {
+  display: none !important;
+}
+
+/* Hide ALL possible control bars and toolbars */
+.react-chrono-timeline .timeline-toolbar,
+.react-chrono-timeline .timeline-toolbar-container,
+.react-chrono-timeline .timeline-controls,
+.react-chrono-timeline .timeline-controls-container,
+.react-chrono-timeline .timeline-search-container,
+.react-chrono-timeline .timeline-jump-container,
+.react-chrono-timeline .timeline-layout-container,
+.react-chrono-timeline .timeline-density-container,
+.react-chrono-timeline .timeline-toolbar-wrapper,
+.react-chrono-timeline .timeline-controls-wrapper,
+.react-chrono-timeline .timeline-header,
+.react-chrono-timeline .timeline-header-container,
+.react-chrono-timeline .timeline-actions,
+.react-chrono-timeline .timeline-actions-container {
+  display: none !important;
+}
+
+/* Hide any input fields, buttons, or controls */
+.react-chrono-timeline input[type="text"],
+.react-chrono-timeline input[type="search"],
+.react-chrono-timeline button[class*="timeline"],
+.react-chrono-timeline div[class*="toolbar"],
+.react-chrono-timeline div[class*="control"],
+.react-chrono-timeline div[class*="search"],
+.react-chrono-timeline div[class*="jump"],
+.react-chrono-timeline div[class*="layout"],
+.react-chrono-timeline div[class*="density"] {
+  display: none !important;
 }

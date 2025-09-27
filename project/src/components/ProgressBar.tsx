@@ -1,17 +1,28 @@
-"use client";
+'use client';
 
-import React from "react";
-import { motion, useScroll } from "framer-motion";
+import { useEffect, useState } from 'react';
 
-const ProgressBar = () => {
-  const { scrollYProgress } = useScroll();
+export default function ProgressBar() {
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const updateScrollProgress = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = (scrollTop / docHeight) * 100;
+      setScrollProgress(scrollPercent);
+    };
+
+    window.addEventListener('scroll', updateScrollProgress);
+    return () => window.removeEventListener('scroll', updateScrollProgress);
+  }, []);
 
   return (
-    <motion.div
-      style={{ scaleX: scrollYProgress }}
-      className="fixed bottom-0 left-0 right-0 h-[20px] bg-red-200 origin-left z-50"
-    ></motion.div>
+    <div className="fixed top-0 left-0 w-full h-1 bg-gray-200 z-50">
+      <div 
+        className="h-full bg-primary-red transition-all duration-150 ease-out"
+        style={{ width: `${scrollProgress}%` }}
+      />
+    </div>
   );
-};
-
-export default ProgressBar;
+}
