@@ -2,15 +2,10 @@
 
 import { motion } from "framer-motion";
 import { Handshake, Globe, Heart, Star } from "lucide-react";
-import { useRef, useState } from "react";
+
 import { Chrono } from "react-chrono";
 
 export default function MatTranSection() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const containerRef = useRef(null);
-  const itemRefs = useRef([]);
-
   const timelineItems = [
     {
       title: "1930 - Hội Phản đế đồng minh",
