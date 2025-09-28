@@ -1,4 +1,4 @@
-declare module 'react-chrono' {
+declare module "react-chrono" {
   export interface ChronoItem {
     title: string;
     cardTitle: string;
@@ -54,7 +54,8 @@ declare module 'react-chrono' {
     fontSizes?: ChronoFontSizes;
     classNames?: ChronoClassNames;
     showToolbar?: boolean;
+    disableToolbar?: boolean;
   }
-  
+
   export const Chrono: React.FC<ChronoProps>;
 }

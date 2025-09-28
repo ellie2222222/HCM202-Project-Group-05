@@ -1,75 +1,219 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
+import { motion, cubicBezier } from "framer-motion";
+import { ChevronDown, Flag, Users, Heart, Star, Quote } from "lucide-react";
+import { useState, useEffect } from "react";
 
 interface HeroSectionProps {
   onExploreClick: () => void;
 }
 
 export default function HeroSection({ onExploreClick }: HeroSectionProps) {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: cubicBezier(0.25, 0.46, 0.45, 0.94),
+      },
+    },
+  };
+
+  const floatingVariants = {
+    animate: {
+      y: [-10, 10, -10],
+      rotate: [0, 2, -2, 0],
+      transition: {
+        duration: 6,
+        repeat: Infinity,
+        ease: "easeInOut",
+      },
+    },
+  };
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-[#D32F2F] to-[#B71C1C] overflow-hidden pt-20">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: 'url(/intro.jpg)',
-          backgroundPosition: 'center center',
-          backgroundSize: 'cover'
-        }}
-      />
-      <div className="absolute inset-0 bg-black opacity-60"></div>
-      
-      <div className="relative z-10 text-center px-6 py-20 max-w-6xl mx-auto w-full">
-        {/* Main Title */}
-        <motion.h1 
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-bold text-[#FFD700] mb-8 leading-tight tracking-wide drop-shadow-2xl text-center"
-        >
-          Đại Đoàn Kết – Nền Tảng Sức Mạnh Dân Tộc
-        </motion.h1>
-        
-        {/* Subtitle */}
-        <motion.p 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.5 }}
-          className="text-xl md:text-2xl text-white mb-16 max-w-4xl mx-auto leading-relaxed font-light italic drop-shadow-lg text-center"
-        >
-          Khám phá tư tưởng Hồ Chí Minh về đoàn kết toàn dân tộc và bài học cho hiện tại
-        </motion.p>
-        
-        {/* Historical Quote */}
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Dynamic Background with Parallax Effect */}
+      <div className="absolute inset-0">
+        {/* Background Image Layer */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.7 }}
-          className="mb-16"
-        >
-          <div className="bg-black bg-opacity-50 backdrop-blur-sm rounded-xl p-8 max-w-4xl mx-auto border border-[#FFD700] border-opacity-40 text-center">
-            <p className="text-lg md:text-xl text-[#FFD700] font-semibold italic leading-relaxed mb-4">
-              &ldquo;Đoàn kết, đoàn kết, đại đoàn kết<br />
-              <span className="text-white">Thành công, thành công, đại thành công.&rdquo;</span>
-            </p>
-            <p className="text-base text-white opacity-90">
-              — Hồ Chí Minh
-            </p>
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-110"
+          style={{
+            backgroundImage: "url(/intro.jpg)",
+            backgroundPosition: "center center",
+            backgroundSize: "cover",
+            x: mousePosition.x * -0.02,
+            y: mousePosition.y * -0.02,
+          }}
+        />
+
+        {/* Gradient Overlays */}
+        <div className="absolute inset-0 bg-gradient-to-br from-red-900/80 via-red-800/70 to-red-700/60"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30"></div>
+      </div>
+
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="relative z-10 text-center px-6 py-20 max-w-7xl mx-auto w-full"
+      >
+        {/* Decorative Top Element */}
+        <motion.div variants={itemVariants} className="mb-8 my-10">
+          <div className="inline-flex items-center gap-4 px-6 py-3 bg-white/10 backdrop-blur-md rounded-full border border-yellow-400/30">
+            <span className="text-yellow-300 font-semibold text-sm tracking-wider uppercase">
+              Tư tưởng Hồ Chí Minh
+            </span>
           </div>
         </motion.div>
-        
-        {/* Call to Action */}
-        <motion.button
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 1 }}
-          onClick={onExploreClick}
-          className="bg-[#FFD700] text-[#D32F2F] px-10 py-4 rounded-full text-lg font-semibold hover:bg-yellow-400 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 border-2 border-[#FFD700] hover:border-yellow-400"
+
+        {/* Main Title with Enhanced Typography */}
+        <motion.div variants={itemVariants} className="mb-8">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-none mb-4">
+            <span className="block bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-200 bg-clip-text text-transparent drop-shadow-2xl">
+              Đại Đoàn Kết
+            </span>
+            <span className="block text-3xl md:text-5xl lg:text-6xl font-bold text-white mt-4 drop-shadow-lg">
+              Nền Tảng Sức Mạnh
+            </span>
+            <span className="block bg-gradient-to-r from-red-300 via-red-200 to-yellow-200 bg-clip-text text-transparent text-3xl md:text-5xl lg:text-6xl font-bold mt-2">
+              Dân Tộc
+            </span>
+          </h1>
+
+          {/* Decorative Line */}
+          <div className="flex justify-center mt-6">
+            <div className="w-32 h-1 bg-gradient-to-r from-transparent via-yellow-400 to-transparent rounded-full"></div>
+          </div>
+        </motion.div>
+
+        {/* Enhanced Subtitle */}
+        <motion.div variants={itemVariants} className="mb-12">
+          <p className="text-xl md:text-3xl text-white/90 max-w-5xl mx-auto leading-relaxed font-light">
+            Khám phá{" "}
+            <span className="text-yellow-300 font-semibold">
+              tư tưởng Hồ Chí Minh
+            </span>{" "}
+            về đoàn kết toàn dân tộc và{" "}
+            <span className="text-red-200 font-semibold">
+              bài học cho hiện tại
+            </span>
+          </p>
+        </motion.div>
+
+        {/* Redesigned Historical Quote */}
+        <motion.div variants={itemVariants} className="mb-12">
+          <div className="relative max-w-5xl mx-auto">
+            {/* Glowing Background Effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 via-yellow-300/30 to-yellow-400/20 rounded-2xl blur-xl"></div>
+
+            {/* Quote Container */}
+            <div className="relative bg-gradient-to-br from-black/60 via-black/50 to-black/60 backdrop-blur-xl rounded-2xl p-8 md:p-12 border-2 border-yellow-400/40 shadow-2xl">
+              {/* Quote Icon */}
+              <div className="flex justify-center mb-6">
+                <div className="w-16 h-16 bg-yellow-400/20 rounded-full flex items-center justify-center border-2 border-yellow-400/40">
+                  <Quote className="text-yellow-500 w-7 h-7"></Quote>
+                </div>
+              </div>
+
+              {/* Quote Text */}
+              <blockquote className="text-center">
+                <p className="text-2xl md:text-4xl font-bold mb-4 leading-tight">
+                  <span className="bg-gradient-to-r from-yellow-200 to-yellow-400 bg-clip-text text-transparent">
+                    &ldquo;Đoàn kết, đoàn kết, đại đoàn kết
+                  </span>
+                  <br />
+                  <span className="text-white text-xl md:text-3xl">
+                    Thành công, thành công, đại thành công&rdquo;
+                  </span>
+                </p>
+
+                {/* Author Attribution */}
+                <div className="flex justify-center items-center gap-3 mt-6">
+                  <div className="w-8 h-0.5 bg-yellow-400"></div>
+                  <div className="px-6 py-2 bg-yellow-400/10 rounded-full border border-yellow-400/30">
+                    <p className="text-white font-semibold text-lg">
+                      Hồ Chí Minh
+                    </p>
+                  </div>
+                  <div className="w-8 h-0.5 bg-yellow-400"></div>
+                </div>
+              </blockquote>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Enhanced Call to Action */}
+        <motion.div
+          variants={itemVariants}
+          className="flex flex-col items-center gap-6"
         >
-          Khám phá ngay
-        </motion.button>
-      </div>
+          <motion.button
+            onClick={onExploreClick}
+            className="group relative px-12 py-5 bg-gradient-to-r from-yellow-400 to-yellow-500 text-red-800 rounded-full text-xl font-bold transition-all duration-300 shadow-2xl hover:shadow-yellow-400/25 border-2 border-yellow-400"
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <span className="relative z-10 flex items-center gap-3">
+              <Flag className="w-6 h-6" />
+              Khám phá ngay
+              <motion.div
+                animate={{ x: [0, 4, 0] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                →
+              </motion.div>
+            </span>
+            <div className="absolute inset-0 bg-gradient-to-r from-yellow-300 to-yellow-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </motion.button>
+
+          {/* Scroll Indicator */}
+          <motion.div
+            className="mt-8 flex flex-col items-center gap-2 text-white/70 cursor-pointer"
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            onClick={onExploreClick}
+          >
+            <span className="text-sm font-medium">Cuộn xuống để khám phá</span>
+            <ChevronDown className="w-6 h-6" />
+          </motion.div>
+        </motion.div>
+      </motion.div>
+
+      <style jsx>{`
+        @keyframes float {
+          0%,
+          100% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          50% {
+            transform: translateY(-20px) rotate(5deg);
+          }
+        }
+      `}</style>
     </section>
   );
 }
