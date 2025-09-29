@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import { Bot } from "lucide-react";
 
 export default function AIChatBubble({
   onClick,
@@ -77,12 +78,9 @@ export default function AIChatBubble({
               isHovered ? "scale-110 rotate-12" : ""
             }`}
           >
-            <Image
-              src="/ai.svg"
-              alt="AI Tutor"
-              width={28}
-              height={28}
-              className="filter drop-shadow-lg"
+            <Bot
+              size={28}
+              className="text-white filter drop-shadow-lg"
             />
           </div>
 

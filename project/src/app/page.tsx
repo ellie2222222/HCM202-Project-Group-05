@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import Header from "@/components/Header";
 import ProgressBar from "@/components/ProgressBar";
 import HeroSection from "@/components/HeroSection";
@@ -13,6 +13,8 @@ import Footer from "@/components/Footer";
 import CQ7 from "@/components/CQ7";
 
 export default function Home() {
+  const [activeSection, setActiveSection] = useState<string>("");
+  
   const sections = {
     "vai-tro": useRef<HTMLDivElement>(null),
     "luc-luong": useRef<HTMLDivElement>(null),
@@ -29,13 +31,47 @@ export default function Home() {
     }
   };
 
+  // Scroll detection to highlight active section
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 100; // Offset for header height
+      
+      // Check each section to see which one is currently in view
+      Object.entries(sections).forEach(([sectionId, ref]) => {
+        if (ref.current) {
+          const element = ref.current;
+          const elementTop = element.offsetTop;
+          const elementBottom = elementTop + element.offsetHeight;
+          
+          if (scrollPosition >= elementTop && scrollPosition < elementBottom) {
+            setActiveSection(sectionId);
+          }
+        }
+      });
+      
+      // If scrolled to top, clear active section
+      if (window.scrollY < 50) {
+        setActiveSection("");
+      }
+    };
+
+    // Add scroll event listener
+    window.addEventListener('scroll', handleScroll);
+    
+    // Initial check
+    handleScroll();
+    
+    // Cleanup
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [sections]);
+
   return (
     <div className="w-full min-h-screen bg-white overflow-x-hidden">
       {/* Progress Bar */}
       <ProgressBar />
 
       {/* Header */}
-      <Header onNavClick={scrollToSection} />
+      <Header onNavClick={scrollToSection} activeSection={activeSection} />
 
       {/* Hero Section with Background Image */}
       <HeroSection onExploreClick={() => scrollToSection("vai-tro")} />
