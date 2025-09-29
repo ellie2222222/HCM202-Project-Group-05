@@ -55,7 +55,7 @@ export default function HeroSection({ onExploreClick }: HeroSectionProps) {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Dynamic Background with Parallax Effect */}
       <div className="absolute inset-0">
         {/* Background Image Layer */}
@@ -79,10 +79,10 @@ export default function HeroSection({ onExploreClick }: HeroSectionProps) {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="relative z-10 text-center px-6 py-20 max-w-7xl mx-auto w-full"
+        className="relative z-10 text-center px-6 py-8 max-w-7xl mx-auto w-full h-full flex flex-col justify-center"
       >
         {/* Decorative Top Element */}
-        <motion.div variants={itemVariants} className="mb-8 my-10">
+        <motion.div variants={itemVariants} className="mb-4">
           <div className="inline-flex items-center gap-4 px-6 py-3 bg-white/10 backdrop-blur-md rounded-full border border-yellow-400/30">
             <span className="text-yellow-300 font-semibold text-sm tracking-wider uppercase">
               Tư tưởng Hồ Chí Minh
@@ -91,18 +91,18 @@ export default function HeroSection({ onExploreClick }: HeroSectionProps) {
         </motion.div>
 
         {/* Main Title with Enhanced Typography */}
-        <motion.div variants={itemVariants} className="mb-8">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-none mb-4">
+        <motion.div variants={itemVariants} className="mb-4">
+          <h2 className="text-4xl md:text-6xl lg:text-7xl font-black leading-none mb-4">
             <span className="block bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-200 bg-clip-text text-transparent drop-shadow-2xl">
               Đại Đoàn Kết
             </span>
-            <span className="block text-3xl md:text-5xl lg:text-6xl font-bold text-white mt-4 drop-shadow-lg">
+            <span className="block text-2xl md:text-4xl lg:text-5xl font-bold text-white mt-4 drop-shadow-lg">
               Nền Tảng Sức Mạnh
             </span>
-            <span className="block bg-gradient-to-r from-red-300 via-red-200 to-yellow-200 bg-clip-text text-transparent text-3xl md:text-5xl lg:text-6xl font-bold mt-2">
+            <span className="block bg-gradient-to-r from-red-300 via-red-200 to-yellow-200 bg-clip-text text-transparent text-2xl md:text-4xl lg:text-5xl font-bold mt-2">
               Dân Tộc
             </span>
-          </h1>
+          </h2>
 
           {/* Decorative Line */}
           <div className="flex justify-center mt-6">
@@ -111,7 +111,7 @@ export default function HeroSection({ onExploreClick }: HeroSectionProps) {
         </motion.div>
 
         {/* Enhanced Subtitle */}
-        <motion.div variants={itemVariants} className="mb-12">
+        <motion.div variants={itemVariants} className="mb-6">
           <p className="text-xl md:text-3xl text-white/90 max-w-5xl mx-auto leading-relaxed font-light">
             Khám phá{" "}
             <span className="text-yellow-300 font-semibold">
@@ -125,15 +125,15 @@ export default function HeroSection({ onExploreClick }: HeroSectionProps) {
         </motion.div>
 
         {/* Redesigned Historical Quote */}
-        <motion.div variants={itemVariants} className="mb-12">
+        <motion.div variants={itemVariants} className="mb-6">
           <div className="relative max-w-5xl mx-auto">
             {/* Glowing Background Effect */}
             <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 via-yellow-300/30 to-yellow-400/20 rounded-2xl blur-xl"></div>
 
             {/* Quote Container */}
-            <div className="relative bg-gradient-to-br from-black/60 via-black/50 to-black/60 backdrop-blur-xl rounded-2xl p-8 md:p-12 border-2 border-yellow-400/40 shadow-2xl">
+            <div className="relative bg-gradient-to-br from-black/60 via-black/50 to-black/60 backdrop-blur-xs rounded-2xl p-6 md:p-8 border-2 border-yellow-400/40 shadow-2xl">
               {/* Quote Icon */}
-              <div className="flex justify-center mb-6">
+              <div className="flex justify-center mb-4">
                 <div className="w-16 h-16 bg-yellow-400/20 rounded-full flex items-center justify-center border-2 border-yellow-400/40">
                   <Quote className="text-yellow-500 w-7 h-7"></Quote>
                 </div>
@@ -141,18 +141,18 @@ export default function HeroSection({ onExploreClick }: HeroSectionProps) {
 
               {/* Quote Text */}
               <blockquote className="text-center">
-                <p className="text-2xl md:text-4xl font-bold mb-4 leading-tight">
+                <p className="text-xl md:text-3xl font-bold mb-3 leading-tight">
                   <span className="bg-gradient-to-r from-yellow-200 to-yellow-400 bg-clip-text text-transparent">
                     &ldquo;Đoàn kết, đoàn kết, đại đoàn kết
                   </span>
                   <br />
-                  <span className="text-white text-xl md:text-3xl">
+                  <span className="text-white text-lg md:text-2xl">
                     Thành công, thành công, đại thành công&rdquo;
                   </span>
                 </p>
 
                 {/* Author Attribution */}
-                <div className="flex justify-center items-center gap-3 mt-6">
+                <div className="flex justify-center items-center gap-3 mt-4">
                   <div className="w-8 h-0.5 bg-yellow-400"></div>
                   <div className="px-6 py-2 bg-yellow-400/10 rounded-full border border-yellow-400/30">
                     <p className="text-white font-semibold text-lg">
@@ -192,7 +192,7 @@ export default function HeroSection({ onExploreClick }: HeroSectionProps) {
 
           {/* Scroll Indicator */}
           <motion.div
-            className="mt-8 flex flex-col items-center gap-2 text-white/70 cursor-pointer"
+            className="mt-4 flex flex-col items-center gap-2 text-white/70 cursor-pointer"
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
             onClick={onExploreClick}

@@ -17,14 +17,14 @@ export default function PhuongThucSection() {
       {/* Background decoration */}
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
-        <motion.h2
+        <motion.h3
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-3xl md:text-4xl font-bold text-center text-[#D32F2F] mb-12"
+          className="text-2xl md:text-3xl font-bold text-center text-[#D32F2F] mb-12"
         >
           5. Phương thức xây dựng khối đại đoàn kết dân tộc
-        </motion.h2>
+        </motion.h3>
 
         {/* Phương thức xây dựng */}
         <motion.div
@@ -34,9 +34,9 @@ export default function PhuongThucSection() {
           className="mb-20"
         >
           <div className="text-center mb-16">
-            <h3 className="text-4xl font-bold text-[#D32F2F] mb-4">
+            <h4 className="text-3xl font-bold text-[#D32F2F] mb-4">
               Phương thức xây dựng
-            </h3>
+            </h4>
             <div className="w-24 h-1 bg-gradient-to-r from-[#D32F2F] to-[#FFD700] mx-auto rounded-full"></div>
             <p className="text-lg text-gray-600 mt-6 max-w-3xl mx-auto">
               Những phương pháp cơ bản để xây dựng và củng cố khối đại đoàn kết
@@ -93,12 +93,9 @@ export default function PhuongThucSection() {
                         <div className="p-3 bg-gradient-to-br from-[#D32F2F]/10 to-[#FFD700]/10 rounded-xl">
                           <item.icon className="w-8 h-8 text-[#D32F2F]" />
                         </div>
-                        <h4 className="text-2xl font-bold text-[#D32F2F] group-hover:text-[#FF6B35] transition-colors">
+                        <h5 className="text-xl font-bold text-[#D32F2F] group-hover:text-[#FF6B35] transition-colors">
                           {item.number} - {item.title}
-                        </h4>
-                      </div>
-                      <div className="absolute -top-2 -right-2 w-6 h-6 bg-[#FFD700] rounded-full flex items-center justify-center">
-                        <CheckCircle className="w-4 h-4 text-[#D32F2F]" />
+                        </h5>
                       </div>
                       <p className="text-gray-700 mb-6 leading-relaxed text-lg font-medium">
                         {item.desc}
@@ -123,9 +120,9 @@ export default function PhuongThucSection() {
           transition={{ duration: 0.8 }}
         >
           <div className="text-center mb-16">
-            <h3 className="text-4xl font-bold text-[#D32F2F] mb-4">
+            <h4 className="text-3xl font-bold text-[#D32F2F] mb-4">
               Phương thức hiện đại
-            </h3>
+            </h4>
             <div className="w-24 h-1 bg-gradient-to-r from-[#D32F2F] to-[#FFD700] mx-auto rounded-full"></div>
             <p className="text-lg text-gray-600 mt-6 max-w-3xl mx-auto">
               Ứng dụng công nghệ hiện đại để tăng cường hiệu quả xây dựng khối
@@ -190,9 +187,9 @@ export default function PhuongThucSection() {
                       <item.icon className="w-12 h-12 text-white" />
                     </div>
 
-                    <h4 className="text-2xl font-bold text-[#D32F2F] mb-4 group-hover:text-[#FF6B35] transition-colors">
+                    <h5 className="text-xl font-bold text-[#D32F2F] mb-4 group-hover:text-[#FF6B35] transition-colors">
                       {item.title}
-                    </h4>
+                    </h5>
 
                     <p className="text-gray-700 mb-6 text-lg font-medium">
                       {item.desc}

@@ -192,7 +192,7 @@ export function AIChatProvider({ children }: { children: React.ReactNode }) {
     setMessages([
       {
         from: "AI",
-        text: "Xin chào, hãy vô tư đặt những câu hỏi liên quan đến chủ nghĩa xã hội khoa học và tôi sẽ giải đáp các thắc mắc của bạn",
+        text: "Xin chào, hãy vô tư đặt những câu hỏi liên quan đến Tư tưởng Hồ Chí Minh và tôi sẽ giải đáp các thắc mắc của bạn",
         timestamp: new Date(),
       },
     ]);

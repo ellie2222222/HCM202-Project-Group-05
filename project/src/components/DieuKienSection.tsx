@@ -7,29 +7,19 @@ import {
   Bird,
   Shield,
   Heart,
-  ChevronDown,
-  ChevronRight,
   Quote,
   Target,
   ClipboardList,
   Circle,
+  CheckCircle,
 } from "lucide-react";
 import axios from "axios";
 
 export default function DieuKienSection() {
   const [quizAnswers, setQuizAnswers] = useState<number[]>([]);
   const [showQuizResult, setShowQuizResult] = useState(false);
-  const [expandedItems, setExpandedItems] = useState<number[]>([]);
   const [aiResult, setAiResult] = useState<any>(null);
   const [isLoadingResult, setIsLoadingResult] = useState(false);
-
-  const toggleItem = (index: number) => {
-    setExpandedItems((prev) =>
-      prev.includes(index)
-        ? prev.filter((item) => item !== index)
-        : [...prev, index]
-    );
-  };
 
   const quizQuestions = [
     {
@@ -281,14 +271,14 @@ export default function DieuKienSection() {
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <motion.h2
+        <motion.h3
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-3xl md:text-4xl font-bold text-center text-[#D32F2F] mb-8"
+          className="text-2xl md:text-3xl font-bold text-center text-[#D32F2F] mb-8"
         >
           3. Điều kiện để xây dựng khối đại đoàn kết toàn dân tộc
-        </motion.h2>
+        </motion.h3>
 
         {/* Phần mở đầu */}
         <motion.div
@@ -305,159 +295,86 @@ export default function DieuKienSection() {
                 <br />
                 Khó vạn lần dân liệu cũng xong.&quot;
               </p>
-              <h3 className="text-xl font-bold mb-6 text-[#D32F2F] mt-5">
+              <h4 className="text-lg font-bold mb-6 text-[#D32F2F] mt-5">
                 - Hồ Chí Minh -
-              </h3>
+              </h4>
             </div>
           </div>
         </motion.div>
 
         {/* 4 điều kiện chính */}
-        <div className="space-y-8 mb-20">
-          <h3 className="text-3xl md:text-4xl font-bold text-center text-[#D32F2F] mb-12">
+        <div className="space-y-12 mb-20">
+          <h4 className="text-2xl md:text-3xl font-bold text-center text-[#D32F2F] mb-12">
             Điều kiện
-          </h3>
+          </h4>
           {[
             {
-              number: "Một là,",
+              number: "Một là",
               icon: Handshake,
               title: "lấy lợi ích chung làm điểm quy tụ",
               desc: "Lấy lợi ích chung làm điểm quy tụ, đồng thời tôn trọng các lợi ích khác biệt chính đáng.",
-              color: "from-[#D32F2F] to-[#D67600]",
               detail:
                 'Hồ Chí Minh khẳng định, nếu độc lập mà dân không có tự do, hạnh phúc thì độc lập "cũng chẳng có ý nghĩa gì". Vì vậy, đoàn kết phải xuất phát từ mục tiêu "vì nước, vì dân".',
             },
             {
-              number: "Hai là,",
+              number: "Hai là",
               icon: Shield,
               title: "kế thừa truyền thống yêu nước",
-              color: "from-[#D32F2F] to-[#D67600]",
               desc: "Phải kế thừa truyền thống yêu nước, nhân nghĩa, đoàn kết của dân tộc.",
               detail:
                 "Sức mạnh đã giúp Việt Nam vượt qua thiên tai, giặc ngoại xâm và giữ vững bản sắc, chủ quyền hàng ngàn năm.",
             },
             {
-              number: "Ba là,",
+              number: "Ba là",
               icon: Bird,
               title: "có lòng khoan dung, độ lượng",
               desc: "Có lòng khoan dung, độ lượng với con người.",
-              color: "from-[#D32F2F] to-[#D67600]",
               detail:
                 '"Năm ngón tay cũng có ngón ngắn ngón dài. Nhưng ngắn dài đều hợp nhau lại nơi bàn tay... Đã là con Lạc cháu Hồng thì ai cũng có ít hay nhiều lòng ái quốc."',
             },
             {
-              number: "Bốn là,",
+              number: "Bốn là",
               icon: Heart,
               title: "có niềm tin vào nhân dân",
               desc: "Phải có niềm tin vào nhân dân.",
-              color: "from-[#D32F2F] to-[#D67600]",
               detail:
                 'Theo Hồ Chí Minh, "Nước lấy dân làm gốc", dân vừa là nền tảng vừa là nguồn sức mạnh vô địch quyết định thắng lợi của cách mạng.',
             },
           ].map((item, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              whileHover={{ scale: 1.01, y: -5 }}
-              className="group"
+              transition={{ duration: 0.6, delay: index * 0.2 }}
+              whileHover={{ scale: 1.02, y: -5 }}
+              className="group relative"
             >
-              <div className="bg-white rounded-2xl p-8 shadow-xl transition-all duration-300 border border-gray-100 hover:shadow-2xl hover:border-[#D32F2F]/30 relative overflow-hidden">
-                {/* Background decoration - matching CQ7 style */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-red-100/20 to-transparent rounded-full -translate-y-16 translate-x-16"></div>
+              <div className="bg-white rounded-2xl p-8 shadow-xl transition-all duration-300 border border-red-100 hover:shadow-2xl hover:border-[#D32F2F]/30 space-y-6 relative overflow-hidden">
+                {/* Background decoration */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-[#D32F2F]/5 to-transparent rounded-full -translate-y-16 translate-x-16"></div>
 
-                <div className="relative z-10">
-                  <div
-                    className={`flex items-start space-x-6 ${
-                      item.detail ? "cursor-pointer" : ""
-                    }`}
-                    onClick={() => item.detail && toggleItem(index)}
-                  >
-                    {/* Icon container with gradient background */}
-                    <div className="flex-shrink-0">
-                      <div
-                        className={`p-4 bg-gradient-to-br ${
-                          item.color || "from-[#D32F2F] to-[#FF6B35]"
-                        } rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-300`}
-                      >
-                        <div className="text-white">
-                          <item.icon />
-                        </div>
+                <div className="flex items-start space-x-6 relative z-10">
+                  <div className="flex-shrink-0">
+                    <div className="relative"></div>
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center space-x-4 mb-6">
+                      <div className="p-3 bg-gradient-to-br from-[#D32F2F]/10 to-[#FFD700]/10 rounded-xl">
+                        <item.icon className="w-8 h-8 text-[#D32F2F]" />
                       </div>
+                      <h5 className="text-xl font-bold text-[#D32F2F] group-hover:text-[#FF6B35] transition-colors">
+                        {item.number} - {item.title}
+                      </h5>
                     </div>
-
-                    {/* Content area */}
-                    <div className="flex-1">
-                      {/* Header with number and title */}
-                      <div className="flex items-center space-x-4 mb-4">
-                        <span
-                          className={`text-3xl font-bold bg-gradient-to-r ${
-                            item.color || "from-[#D32F2F] to-[#D67600]"
-                          } bg-clip-text text-transparent`}
-                        >
-                          {item.number}
-                        </span>
-                        <h4 className="text-2xl font-bold text-[#D32F2F] group-hover:text-[#FF6B35] transition-colors">
-                          {item.title}
-                        </h4>
-                      </div>
-
-                      {/* Description */}
-                      <p className="text-lg text-gray-700 leading-relaxed font-medium">
-                        {item.desc}
+                    <p className="text-gray-700 mb-6 leading-relaxed text-lg font-medium">
+                      {item.desc}
+                    </p>
+                    <div className="bg-gradient-to-r from-gray-50 to-blue-50 rounded-xl p-6 border-l-4 border-[#D32F2F]">
+                      <p className="text-gray-600 leading-relaxed text-base">
+                        {item.detail}
                       </p>
                     </div>
-
-                    {/* Expand/Collapse indicator */}
-                    {item.detail && (
-                      <div className="flex-shrink-0 pt-8">
-                        <motion.div
-                          animate={{
-                            rotate: expandedItems.includes(index) ? 90 : 0,
-                          }}
-                          transition={{ duration: 0.3 }}
-                          className="p-2 rounded-full bg-gray-100 group-hover:bg-[#D32F2F]/10 transition-colors"
-                        >
-                          {item.detail && expandedItems.includes(index) ? (
-                            <ChevronDown className="w-6 h-6 text-[#D32F2F]" />
-                          ) : (
-                            <ChevronRight className="w-6 h-6 text-[#D32F2F]" />
-                          )}
-                        </motion.div>
-                      </div>
-                    )}
                   </div>
-
-                  {/* Expanded detail section - matching CQ7 style */}
-                  {item.detail && expandedItems.includes(index) && (
-                    <motion.div
-                      initial={false}
-                      animate={{
-                        height:
-                          item.detail && expandedItems.includes(index)
-                            ? "auto"
-                            : 0,
-                        opacity:
-                          item.detail && expandedItems.includes(index) ? 1 : 0,
-                      }}
-                      transition={{ duration: 0.3 }}
-                      className="overflow-hidden"
-                    >
-                      <div className="mt-6 ml-22">
-                        <div className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl p-6 border-l-4 border-[#D32F2F]">
-                          <motion.p
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.3 }}
-                            className="text-gray-600 leading-relaxed italic"
-                          >
-                            {item.detail}
-                          </motion.p>
-                        </div>
-                      </div>
-                    </motion.div>
-                  )}
                 </div>
               </div>
             </motion.div>
@@ -469,178 +386,216 @@ export default function DieuKienSection() {
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="bg-gray-50 p-8 rounded-lg"
+          className="mt-20"
         >
-          <h3 className="text-3xl md:text-4xl font-bold text-center text-[#D32F2F] mb-8">
-            &ldquo;Tổ chức của bạn có đoàn kết thực sự?&rdquo;
-          </h3>
-          <div className="space-y-6">
-            {quizQuestions.map((question, qIndex) => (
-              <div key={qIndex} className="bg-white p-6 rounded-lg">
-                <h4 className="text-lg font-semibold mb-4">
-                  {question.question}
-                </h4>
-                <div className="space-y-2">
-                  {question.options.map((option, oIndex) => {
-                    const isSelected = quizAnswers[qIndex] === oIndex;
-                    const shouldShowColor = showQuizResult && isSelected;
-                    const colorClasses = shouldShowColor
-                      ? getOptionColor(oIndex, true)
-                      : getOptionColor(oIndex, false);
+          <div className="text-center mb-16">
+            <h4 className="text-2xl md:text-3xl font-bold text-[#D32F2F] mb-4">
+              &ldquo;Tổ chức của bạn có đoàn kết thực sự?&rdquo;
+            </h4>
+            <div className="w-24 h-1 bg-gradient-to-r from-[#D32F2F] to-[#FFD700] mx-auto rounded-full"></div>
+            <p className="text-lg text-gray-600 mt-6 max-w-3xl mx-auto">
+              Đánh giá mức độ đoàn kết trong tổ chức của bạn thông qua các câu hỏi thực tế
+            </p>
+          </div>
 
-                    return (
-                      <label
-                        key={oIndex}
-                        className={`flex items-center space-x-3 cursor-pointer p-3 rounded-lg border transition-all duration-300 ${
-                          shouldShowColor
-                            ? `${colorClasses.bg} ${colorClasses.border} ${colorClasses.text}`
-                            : "hover:bg-gray-50 border-gray-200"
-                        }`}
-                      >
-                        <input
-                          type="radio"
-                          name={`question-${qIndex}`}
-                          value={oIndex}
-                          checked={isSelected}
-                          onChange={() => {
-                            if (!showQuizResult) {
-                              const newAnswers = [...quizAnswers];
-                              newAnswers[qIndex] = oIndex;
-                              setQuizAnswers(newAnswers);
-                            }
-                          }}
-                          disabled={showQuizResult}
-                          className={`${
-                            shouldShowColor
-                              ? colorClasses.radio
-                              : "text-[#D32F2F]"
-                          } focus:ring-[#D32F2F] ${
-                            showQuizResult ? "cursor-not-allowed" : ""
-                          }`}
-                        />
-                        <span
-                          className={
-                            shouldShowColor
-                              ? colorClasses.text
-                              : "text-gray-700"
-                          }
-                        >
-                          {option}
-                        </span>
-                        {shouldShowColor && (
-                          <span
-                            className={`ml-auto px-2 py-1 rounded-full text-xs font-semibold ${
-                              oIndex === 0
-                                ? "bg-green-200 text-green-800"
-                                : oIndex === 1
-                                ? "bg-lime-200 text-lime-800"
-                                : oIndex === 2
-                                ? "bg-yellow-200 text-yellow-800"
-                                : oIndex === 3
-                                ? "bg-orange-200 text-orange-800"
-                                : "bg-red-200 text-red-800"
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {quizQuestions.map((question, qIndex) => (
+              <motion.div
+                key={qIndex}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: qIndex * 0.1 }}
+                className="group relative"
+              >
+                <div className="bg-white rounded-2xl p-6 shadow-xl transition-all duration-300 border border-red-100 hover:shadow-2xl hover:border-[#D32F2F]/30 space-y-4 relative overflow-hidden h-full">
+                  {/* Background decoration */}
+                  <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-[#D32F2F]/5 to-transparent rounded-full -translate-y-12 translate-x-12"></div>
+
+                  <div className="relative z-10 h-full flex flex-col">
+                    <div className="flex items-start space-x-3 mb-4">
+                      <div className="p-2 bg-gradient-to-br from-[#D32F2F]/10 to-[#FFD700]/10 rounded-lg flex-shrink-0">
+                        <span className="text-[#D32F2F] font-bold text-sm">{qIndex + 1}</span>
+                      </div>
+                      <h5 className="text-base font-bold text-[#D32F2F] group-hover:text-[#FF6B35] transition-colors leading-tight">
+                        {question.question}
+                      </h5>
+                    </div>
+                    
+                    <div className="space-y-2 flex-1">
+                      {question.options.map((option, oIndex) => {
+                        const isSelected = quizAnswers[qIndex] === oIndex;
+                        const shouldShowColor = showQuizResult && isSelected;
+                        const colorClasses = shouldShowColor
+                          ? getOptionColor(oIndex, true)
+                          : getOptionColor(oIndex, false);
+
+                        return (
+                          <label
+                            key={oIndex}
+                            className={`flex items-center space-x-2 cursor-pointer p-3 rounded-lg border transition-all duration-300 text-sm ${
+                              shouldShowColor
+                                ? `${colorClasses.bg} ${colorClasses.border} ${colorClasses.text}`
+                                : "hover:bg-gray-50 border-gray-200"
                             }`}
                           >
-                            {oIndex === 0
-                              ? "Xuất sắc"
-                              : oIndex === 1
-                              ? "Tốt"
-                              : oIndex === 2
-                              ? "Trung bình"
-                              : oIndex === 3
-                              ? "Kém"
-                              : "Rất kém"}
-                          </span>
-                        )}
-                      </label>
-                    );
-                  })}
-                </div>
-                {showQuizResult && (
-                  <div className="mt-3 p-3 bg-blue-50 rounded-lg">
-                    <p className="text-sm text-blue-800 italic">
-                      {question.explanation}
-                    </p>
+                            <input
+                              type="radio"
+                              name={`question-${qIndex}`}
+                              value={oIndex}
+                              checked={isSelected}
+                              onChange={() => {
+                                if (!showQuizResult) {
+                                  const newAnswers = [...quizAnswers];
+                                  newAnswers[qIndex] = oIndex;
+                                  setQuizAnswers(newAnswers);
+                                }
+                              }}
+                              disabled={showQuizResult}
+                              className={`${
+                                shouldShowColor
+                                  ? colorClasses.radio
+                                  : "text-[#D32F2F]"
+                              } focus:ring-[#D32F2F] ${
+                                showQuizResult ? "cursor-not-allowed" : ""
+                              }`}
+                            />
+                            <span
+                              className={`flex-1 text-xs ${
+                                shouldShowColor
+                                  ? colorClasses.text
+                                  : "text-gray-700"
+                              }`}
+                            >
+                              {option}
+                            </span>
+                            {shouldShowColor && (
+                              <span
+                                className={`px-2 py-1 rounded-full text-xs font-semibold ${
+                                  oIndex === 0
+                                    ? "bg-green-200 text-green-800"
+                                    : oIndex === 1
+                                    ? "bg-lime-200 text-lime-800"
+                                    : oIndex === 2
+                                    ? "bg-yellow-200 text-yellow-800"
+                                    : oIndex === 3
+                                    ? "bg-orange-200 text-orange-800"
+                                    : "bg-red-200 text-red-800"
+                                }`}
+                              >
+                                {oIndex === 0
+                                  ? "Xuất sắc"
+                                  : oIndex === 1
+                                  ? "Tốt"
+                                  : oIndex === 2
+                                  ? "Trung bình"
+                                  : oIndex === 3
+                                  ? "Kém"
+                                  : "Rất kém"}
+                              </span>
+                            )}
+                          </label>
+                        );
+                      })}
+                    </div>
+
+                    {showQuizResult && (
+                      <div className="mt-4 p-3 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border-l-4 border-blue-500">
+                        <p className="text-xs text-blue-800 italic">
+                          {question.explanation}
+                        </p>
+                      </div>
+                    )}
                   </div>
-                )}
-              </div>
+                </div>
+              </motion.div>
             ))}
-            <div className="text-center">
-              <button
-                onClick={handleQuizSubmit}
-                disabled={quizAnswers.length !== quizQuestions.length}
-                className="bg-[#D32F2F] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#B71C1C] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-              >
-                Xem kết quả phân tích
-              </button>
-            </div>
+
+          </div>
+
+          <div className="text-center mt-8">
+            <button
+              onClick={handleQuizSubmit}
+              disabled={quizAnswers.length !== quizQuestions.length}
+              className="bg-[#D32F2F] text-white px-8 py-4 rounded-xl font-semibold hover:bg-[#B71C1C] disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 shadow-lg hover:shadow-xl"
+            >
+              Xem kết quả phân tích
+            </button>
           </div>
 
           {showQuizResult && (
-            <div className="space-y-6 mt-4">
-              <div className="text-center">
-                {isLoadingResult ? (
-                  <p className="text-sm text-gray-500 italic">
-                    Đang phân tích chi tiết với AI...
-                  </p>
-                ) : (
-                  <>
-                    <div className="flex justify-center mb-4">
-                      <Target className="w-16 h-16 text-[#D32F2F]" />
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="mt-12"
+            >
+              <div className="bg-white rounded-2xl p-8 shadow-xl border border-red-100 space-y-8">
+                <div className="text-center">
+                  {isLoadingResult ? (
+                    <div className="flex items-center justify-center space-x-3">
+                      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#D32F2F]"></div>
+                      <p className="text-lg text-gray-600">Đang phân tích chi tiết với AI...</p>
                     </div>
-                    <h4 className="text-3xl font-bold text-[#D32F2F] mb-4">
-                      {(aiResult || calculateQuizResult()).level}
-                    </h4>
-                    <p className="text-lg text-gray-700 mb-6">
-                      {(aiResult || calculateQuizResult()).message}
-                    </p>
-                  </>
-                )}
-              </div>
-
-              <div className="bg-gradient-to-r from-[#D32F2F] to-[#B71C1C] text-white p-6 rounded-lg">
-                <h5 className="text-xl font-bold mb-4">
-                  <div className="flex items-center space-x-2">
-                    <ClipboardList className="w-6 h-6" />
-                    <span>Khuyến nghị cải thiện:</span>
-                  </div>
-                </h5>
-                <ul className="space-y-2">
-                  {(aiResult || calculateQuizResult()).recommendations.map(
-                    (rec: string, index: number) => (
-                      <li key={index} className="flex items-start space-x-2">
-                        <Circle className="w-2 h-2 text-[#D67600] fill-current mt-2 flex-shrink-0" />
-                        <span>{rec}</span>
-                      </li>
-                    )
+                  ) : (
+                    <>
+                      <div className="flex justify-center mb-6">
+                        <div className="w-20 h-20 bg-gradient-to-br from-[#D32F2F] to-[#FFD700] rounded-full flex items-center justify-center">
+                          <Target className="w-10 h-10 text-white" />
+                        </div>
+                      </div>
+                      <h5 className="text-3xl font-bold text-[#D32F2F] mb-4">
+                        {(aiResult || calculateQuizResult()).level}
+                      </h5>
+                      <p className="text-xl text-gray-700 mb-8 max-w-3xl mx-auto">
+                        {(aiResult || calculateQuizResult()).message}
+                      </p>
+                    </>
                   )}
-                </ul>
-              </div>
+                </div>
 
-              <div className="text-center">
-                <button
-                  onClick={() => {
-                    setQuizAnswers([]);
-                    setShowQuizResult(false);
-                    setAiResult(null); // Reset AI result
-                  }}
-                  className="bg-[#D32F2F] text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-500 transition-colors mr-4"
-                >
-                  Làm lại
-                </button>
-                <button
-                  onClick={() => {
-                    // Could add sharing functionality here
-                    alert(
-                      "Cảm ơn bạn đã tham gia đánh giá! Hãy chia sẻ kết quả với đồng nghiệp sau khi tính năng này được hoàn thiện."
-                    );
-                  }}
-                  className="bg-white text-[#D32F2F] border-2 border-[#D32F2F] px-6 py-3 rounded-lg font-semibold hover:bg-[#D32F2F] hover:text-white transition-colors"
-                >
-                  Chia sẻ kết quả
-                </button>
+                <div className="bg-gradient-to-r from-[#D32F2F] to-[#B71C1C] text-white p-8 rounded-2xl">
+                  <div className="flex items-center space-x-3 mb-6">
+                    <ClipboardList className="w-8 h-8" />
+                    <h6 className="text-2xl font-bold">Khuyến nghị cải thiện</h6>
+                  </div>
+                  <div className="space-y-4">
+                    {(aiResult || calculateQuizResult()).recommendations.map(
+                      (rec: string, index: number) => (
+                        <div key={index} className="flex items-start space-x-4">
+                          <div className="w-6 h-6 bg-[#D67600] rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                            <span className="text-white text-sm font-bold">{index + 1}</span>
+                          </div>
+                          <p className="text-white leading-relaxed">{rec}</p>
+                        </div>
+                      )
+                    )}
+                  </div>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <button
+                    onClick={() => {
+                      setQuizAnswers([]);
+                      setShowQuizResult(false);
+                      setAiResult(null);
+                    }}
+                    className="bg-[#D32F2F] text-white px-8 py-4 rounded-xl font-semibold hover:bg-red-500 transition-all duration-300 shadow-lg hover:shadow-xl"
+                  >
+                    Làm lại
+                  </button>
+                  <button
+                    onClick={() => {
+                      alert(
+                        "Cảm ơn bạn đã tham gia đánh giá! Hãy chia sẻ kết quả với đồng nghiệp sau khi tính năng này được hoàn thiện."
+                      );
+                    }}
+                    className="bg-white text-[#D32F2F] border-2 border-[#D32F2F] px-8 py-4 rounded-xl font-semibold hover:bg-[#D32F2F] hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl"
+                  >
+                    Chia sẻ kết quả
+                  </button>
+                </div>
               </div>
-            </div>
+            </motion.div>
           )}
         </motion.div>
       </div>

@@ -3,8 +3,6 @@
 import { motion } from "framer-motion";
 import { Handshake, Globe, Heart, Star } from "lucide-react";
 
-import { Chrono } from "react-chrono";
-
 export default function MatTranSection() {
   const timelineItems = [
     {
@@ -75,131 +73,187 @@ export default function MatTranSection() {
   ];
 
   return (
-    <>
-      <style jsx global>{`
-        .custom-chrono-media img {
-          width: 100% !important;
-          height: 200px !important;
-          object-fit: cover !important;
-        }
-        .custom-chrono-card {
-          max-width: 600px !important;
-        }
-      `}</style>
-      <section className="py-20 bg-gradient-to-b from-white to-gray-50">
+    <section className="py-20 bg-gradient-to-b from-white to-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <motion.h2
+          <motion.h3
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-3xl md:text-4xl font-bold text-center text-[#D32F2F] mb-8"
+            className="text-2xl md:text-3xl font-bold text-center text-[#D32F2F] mb-8"
           >
             4. Hình thức, nguyên tắc tổ chức của khối đại đoàn kết toàn dân tộc
             - Mặt trận dân tộc thống nhất
-          </motion.h2>
+          </motion.h3>
 
-          {/* React Chrono Timeline */}
+          {/* Timeline - No Framer Motion */}
           <div className="py-16">
-            <h3 className="text-3xl md:text-4xl font-bold text-center text-[#D32F2F] mb-12">
+            <h4 className="text-2xl md:text-3xl font-bold text-center text-[#D32F2F] mb-12">
               Lịch sử phát triển các Mặt trận
-            </h3>
+            </h4>
             <div className="w-24 h-1 bg-gradient-to-r from-[#D32F2F] to-[#FFD700] mx-auto rounded-full mb-12"></div>
+            
             <div className="max-w-6xl mx-auto">
-              <Chrono
-                disableToolbar={true} // Hides the toolbar
-                items={timelineItems}
-                mode="VERTICAL_ALTERNATING"
-                theme={{
-                  primary: "#D32F2F",
-                  secondary: "#FFD700",
-                  cardBgColor: "#ffffff",
-                  cardForeColor: "#333333",
-                  titleColor: "#D32F2F",
-                  titleColorActive: "#D32F2F",
-                }}
-                cardHeight={300}
-                cardWidth={600}
-                hideControls={true}
-                allowDynamicUpdate={true}
-                scrollable={{ scrollbar: true }}
-                fontSizes={{
-                  cardSubtitle: "1rem",
-                  cardText: "0.9rem",
-                  cardTitle: "1.2rem",
-                  title: "1.1rem",
-                }}
-                classNames={{
-                  card: "custom-chrono-card",
-                  cardMedia: "custom-chrono-media",
-                  cardSubTitle: "custom-chrono-subtitle",
-                  cardText: "custom-chrono-text",
-                  cardTitle: "custom-chrono-title",
-                  controls: "custom-chrono-controls",
-                  title: "custom-chrono-main-title",
-                }}
-              />
+              <div className="relative">
+                {/* Timeline line */}
+                <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-[#D32F2F] to-[#FFD700] rounded-full"></div>
+                
+                {timelineItems.map((item, index) => (
+                  <div key={index} className={`relative flex items-center mb-16 ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}>
+                    {/* Timeline dot */}
+                    <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-[#D32F2F] rounded-full border-4 border-white shadow-lg z-10"></div>
+                    
+                    {/* Content card */}
+                    <div className={`w-5/12 ${index % 2 === 0 ? 'pr-8 text-right' : 'pl-8 text-left'}`}>
+                      <div className="bg-white rounded-2xl shadow-xl border border-gray-200 hover:shadow-2xl transition-all duration-300 overflow-hidden">
+                        {/* Image section */}
+                        <div className="relative h-128 w-full overflow-hidden">
+                          <img
+                            src={item.media?.source?.url || '/placeholder-timeline.jpg'}
+                            alt={item.cardTitle}
+                            className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                            loading="lazy"
+                            onError={(e) => {
+                              // Fallback to placeholder if image fails to load
+                              e.currentTarget.src = '/placeholder-timeline.jpg';
+                            }}
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                          <div className="absolute top-4 left-4">
+                            <div className="w-10 h-10 bg-gradient-to-br from-[#D32F2F] to-[#FFD700] rounded-full flex items-center justify-center">
+                              <span className="text-white font-bold text-sm">{index + 1}</span>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        {/* Content section */}
+                        <div className="p-6">
+                          <div className="mb-4">
+                            <h5 className="text-xl font-bold text-[#D32F2F] mb-2">{item.cardTitle}</h5>
+                            <p className="text-sm text-gray-600 font-medium">{item.cardSubtitle}</p>
+                          </div>
+                          <p className="text-gray-700 leading-relaxed text-sm mb-4">
+                            {item.cardDetailedText}
+                          </p>
+                          <div className="text-xs text-[#D32F2F] font-semibold">
+                            {item.title}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
           {/* Nguyên tắc tổ chức */}
           <div className="mt-20">
-            <h3 className="text-3xl md:text-4xl font-bold text-center text-[#D32F2F] mb-12">
+            <h4 className="text-2xl md:text-3xl font-bold text-center text-[#D32F2F] mb-12">
               Nguyên tắc tổ chức
-            </h3>
+            </h4>
             <div className="w-24 h-1 bg-gradient-to-r from-[#D32F2F] to-[#FFD700] mx-auto rounded-full mb-12"></div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            {/* Mô tả tổng quan */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-center mb-16"
+            >
+              <div className="backdrop-blur-sm bg-white/70 border border-white/20 rounded-3xl p-8 shadow-2xl max-w-4xl mx-auto">
+                <p className="text-lg text-gray-700 leading-relaxed">
+                  Hồ Chí Minh đề ra một số nguyên tắc cơ bản để Mặt trận hoạt động hiệu quả, 
+                  đảm bảo sự đoàn kết bền vững và phát huy sức mạnh toàn dân tộc.
+                </p>
+              </div>
+            </motion.div>
+
+            <div className="space-y-12">
               {[
                 {
-                  number: "01",
+                  number: "1",
                   icon: Handshake,
                   title: "Hiệp thương dân chủ",
-                  desc: "Bàn bạc, thỏa thuận công khai trên cơ sở bình đẳng, tôn trọng lẫn nhau",
+                  subtitle: "Bàn bạc, thỏa thuận công khai",
+                  points: [
+                    "Các thành viên trong Mặt trận bàn bạc, thỏa thuận công khai trên cơ sở bình đẳng, tôn trọng lẫn nhau.",
+                    "Mọi quyết định quan trọng đều phải xuất phát từ ý chí và nguyện vọng của nhân dân."
+                  ],
+                  color: "from-blue-500 to-cyan-500"
                 },
                 {
-                  number: "02",
+                  number: "2", 
                   icon: Globe,
-                  title: "Đoàn kết rộng rãi",
-                  desc: "Lâu dài, bền vững, bao gồm mọi lực lượng có thể đoàn kết được",
+                  title: "Đoàn kết rộng rãi, lâu dài",
+                  subtitle: "Chiến lược lâu dài, bền vững",
+                  points: [
+                    "Đoàn kết không phải nhất thời mà là chiến lược, lâu dài.",
+                    "Đoàn kết phải rộng rãi, bao gồm mọi lực lượng có thể đoàn kết được, kể cả những người từng lầm đường nhưng biết quay về với dân tộc."
+                  ],
+                  color: "from-green-500 to-emerald-500"
                 },
                 {
-                  number: "03",
+                  number: "3",
                   icon: Heart,
-                  title: "Lợi ích dân tộc trên hết",
-                  desc: "Độc lập, tự do, thống nhất, hạnh phúc của toàn thể nhân dân",
+                  title: "Đoàn kết trên cơ sở lợi ích dân tộc, quyền lợi nhân dân",
+                  subtitle: "Lợi ích tối cao của dân tộc",
+                  points: [
+                    "Lợi ích tối cao là độc lập, tự do, thống nhất, hạnh phúc của nhân dân.",
+                    "Các thành phần, giai cấp trong Mặt trận đều bình đẳng về quyền lợi và nghĩa vụ trước dân tộc."
+                  ],
+                  color: "from-red-500 to-pink-500"
                 },
                 {
-                  number: "04",
+                  number: "4",
                   icon: Star,
-                  title: "Lãnh đạo của Đảng Cộng sản Việt Nam",
-                  desc: "Đảng vừa là thành viên, vừa là lực lượng lãnh đạo chính trị",
-                },
+                  title: "Đặt dưới sự lãnh đạo của Đảng Cộng sản Việt Nam",
+                  subtitle: "Đảng vừa là thành viên, vừa là lực lượng lãnh đạo",
+                  points: [
+                    "Đảng vừa là thành viên, vừa là lực lượng lãnh đạo Mặt trận.",
+                    "Nguyên tắc này đảm bảo cho Mặt trận có đường lối đúng đắn, giữ được khối đoàn kết vững chắc và định hướng cách mạng."
+                  ],
+                  color: "from-yellow-500 to-orange-500"
+                }
               ].map((item, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  whileHover={{ scale: 1.05, y: -5 }}
+                  transition={{ duration: 0.8, delay: index * 0.1 }}
+                  whileHover={{ scale: 1.02, y: -5 }}
                   className="group relative"
                 >
-                  <div className="bg-white rounded-2xl p-8 shadow-lg transition-all duration-300 border border-red-100 hover:shadow-xl hover:border-[#D32F2F]/30 relative overflow-hidden">
-                    {/* Background decoration */}
-                    <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-[#D32F2F]/5 to-transparent rounded-full -translate-y-10 translate-x-10"></div>
-
-                    <div className="relative z-10">
-                      <div className="flex items-center space-x-4 mb-6">
-                        <div className="p-2 bg-gradient-to-br from-[#D32F2F]/10 to-[#FFD700]/10 rounded-lg">
-                          <item.icon className="w-6 h-6 text-[#D32F2F]" />
+                  <div className="bg-white rounded-3xl shadow-2xl border border-gray-200/50 hover:shadow-2xl hover:scale-[1.01] transition-all duration-500 overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-br from-gray-50/50 via-transparent to-gray-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div className="relative p-8 md:p-12">
+                      <div className="flex flex-col lg:flex-row items-start gap-8">
+                        <div className="flex-shrink-0 p-6 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl shadow-lg">
+                          <item.icon className="w-12 h-12 text-white" />
+                        </div>
+                        <div className="flex-1">
+                          <div className="flex items-center gap-3 mb-6">
+                            <span className="px-4 py-2 bg-red-100 text-red-700 rounded-full text-sm font-semibold">
+                              Nguyên tắc {item.number}
+                            </span>
+                          </div>
+                          <h6 className="text-xl md:text-2xl font-bold text-gray-900 mb-4 leading-tight">
+                            {item.title}
+                          </h6>
+                          <p className="text-lg text-red-600 font-semibold mb-6">
+                            {item.subtitle}
+                          </p>
+                          <div className="space-y-4">
+                            {item.points.map((point, pointIndex) => (
+                              <div key={pointIndex} className="flex items-start space-x-3">
+                                <div className="flex-shrink-0 w-2 h-2 bg-red-500 rounded-full mt-3"></div>
+                                <p className="text-gray-700 leading-relaxed text-lg">
+                                  {point}
+                                </p>
+                              </div>
+                            ))}
+                          </div>
                         </div>
                       </div>
-
-                      <h4 className="text-xl font-bold text-[#D32F2F] mb-4 group-hover:text-[#FF6B35] transition-colors">
-                        {item.title}
-                      </h4>
-
-                      <p className="text-gray-600 leading-relaxed">
-                        {item.desc}
-                      </p>
                     </div>
                   </div>
                 </motion.div>
@@ -208,6 +262,6 @@ export default function MatTranSection() {
           </div>
         </div>
       </section>
-    </>
   );
 }
+
