@@ -225,12 +225,12 @@ export default function DieuKienSection() {
                 {
                   text: `Bạn là chuyên gia về Tư tưởng Hồ Chí Minh. Trả lời bằng tiếng Việt,
                    rõ ràng, ngắn gọn, dựa trên kiến thức của Tư tưởng Hồ Chí Minh, chi tiết nếu là chương 5: ${quizQuestions
-                     .map((question) => question.question)
-                     .join(", ")} và đáp án của bạn là: ${quizAnswers
-                    .map((answer) => answer + 1)
-                    .join(
-                      ", "
-                    )}, dựa trên các mức độ của điểm mà hãy trả về response dưới dạng json theo cấu trúc sau: {level: string, message: string, recommendations: string[]} ngoài ra không kèm theo thông tin nào khác`,
+                      .map((question) => question.question)
+                      .join(", ")} và đáp án của bạn là: ${quizAnswers
+                        .map((answer) => answer + 1)
+                        .join(
+                          ", "
+                        )}, dựa trên các mức độ của điểm mà hãy trả về response dưới dạng json theo cấu trúc sau: {level: string, message: string, recommendations: string[]} ngoài ra không kèm theo thông tin nào khác`,
                 },
               ],
             },
@@ -420,7 +420,7 @@ export default function DieuKienSection() {
                         {question.question}
                       </h5>
                     </div>
-                    
+
                     <div className="space-y-2 flex-1">
                       {question.options.map((option, oIndex) => {
                         const isSelected = quizAnswers[qIndex] === oIndex;
@@ -432,11 +432,10 @@ export default function DieuKienSection() {
                         return (
                           <label
                             key={oIndex}
-                            className={`flex items-center space-x-2 cursor-pointer p-3 rounded-lg border transition-all duration-300 text-sm ${
-                              shouldShowColor
+                            className={`flex items-center space-x-2 cursor-pointer p-3 rounded-lg border transition-all duration-300 text-sm ${shouldShowColor
                                 ? `${colorClasses.bg} ${colorClasses.border} ${colorClasses.text}`
                                 : "hover:bg-gray-50 border-gray-200"
-                            }`}
+                              }`}
                           >
                             <input
                               type="radio"
@@ -451,46 +450,42 @@ export default function DieuKienSection() {
                                 }
                               }}
                               disabled={showQuizResult}
-                              className={`${
-                                shouldShowColor
+                              className={`${shouldShowColor
                                   ? colorClasses.radio
                                   : "text-[#D32F2F]"
-                              } focus:ring-[#D32F2F] ${
-                                showQuizResult ? "cursor-not-allowed" : ""
-                              }`}
+                                } focus:ring-[#D32F2F] ${showQuizResult ? "cursor-not-allowed" : ""
+                                }`}
                             />
                             <span
-                              className={`flex-1 text-xs ${
-                                shouldShowColor
+                              className={`flex-1 text-xs ${shouldShowColor
                                   ? colorClasses.text
                                   : "text-gray-700"
-                              }`}
+                                }`}
                             >
                               {option}
                             </span>
                             {shouldShowColor && (
                               <span
-                                className={`px-2 py-1 rounded-full text-xs font-semibold ${
-                                  oIndex === 0
+                                className={`px-2 py-1 rounded-full text-xs font-semibold ${oIndex === 0
                                     ? "bg-green-200 text-green-800"
                                     : oIndex === 1
-                                    ? "bg-lime-200 text-lime-800"
-                                    : oIndex === 2
-                                    ? "bg-yellow-200 text-yellow-800"
-                                    : oIndex === 3
-                                    ? "bg-orange-200 text-orange-800"
-                                    : "bg-red-200 text-red-800"
-                                }`}
+                                      ? "bg-lime-200 text-lime-800"
+                                      : oIndex === 2
+                                        ? "bg-yellow-200 text-yellow-800"
+                                        : oIndex === 3
+                                          ? "bg-orange-200 text-orange-800"
+                                          : "bg-red-200 text-red-800"
+                                  }`}
                               >
                                 {oIndex === 0
                                   ? "Xuất sắc"
                                   : oIndex === 1
-                                  ? "Tốt"
-                                  : oIndex === 2
-                                  ? "Trung bình"
-                                  : oIndex === 3
-                                  ? "Kém"
-                                  : "Rất kém"}
+                                    ? "Tốt"
+                                    : oIndex === 2
+                                      ? "Trung bình"
+                                      : oIndex === 3
+                                        ? "Kém"
+                                        : "Rất kém"}
                               </span>
                             )}
                           </label>

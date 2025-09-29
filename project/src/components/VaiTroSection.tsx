@@ -40,8 +40,8 @@ export default function VaiTroSection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <div className="backdrop-blur-sm bg-gradient-to-r from-red-50/80 to-orange-50/80 border border-red-200/30 rounded-3xl p-8 shadow-2xl max-w-5xl mx-auto">
-            <p className="text-xl text-gray-800 leading-relaxed font-medium">
+          <div >
+            <p className="text-xl text-black leading-relaxed font-semibold">
               Trong tư tưởng Hồ Chí Minh, đại đoàn kết toàn dân tộc không phải là sách lược hay thủ đoạn chính trị mà là chiến lược lâu dài, nhất quán của cách mạng Việt Nam.
             </p>
           </div>

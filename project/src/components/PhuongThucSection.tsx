@@ -135,7 +135,7 @@ export default function PhuongThucSection() {
               {
                 icon: Smartphone,
                 title: "Kết nối qua mạng xã hội",
-                desc: "Sử dụng công nghệ để kết nối mọi người",
+                desc: "Sử dụng công nghệ để kết nối",
                 features: [
                   "Facebook, Zalo, TikTok",
                   "Truyền thông đa phương tiện",
@@ -157,7 +157,7 @@ export default function PhuongThucSection() {
               {
                 icon: MessageCircle,
                 title: "Cơ chế phản biện công khai",
-                desc: "Tạo không gian thảo luận, phản biện",
+                desc: "Tạo không gian thảo luận, phản biện ",
                 features: [
                   "Diễn đàn trực tuyến",
                   "Bình luận công khai",
@@ -172,9 +172,9 @@ export default function PhuongThucSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
                 whileHover={{ scale: 1.05, y: -10 }}
-                className="group relative"
+                className="group relative h-full"
               >
-                <div className="bg-white rounded-2xl p-8 shadow-xl transition-all duration-300 border border-gray-100 hover:shadow-2xl hover:border-[#D32F2F]/30 text-center space-y-6 relative overflow-hidden">
+                <div className="bg-white rounded-2xl p-8 shadow-xl transition-all duration-300 border border-gray-100 hover:shadow-2xl hover:border-[#D32F2F]/30 text-center space-y-6 relative overflow-hidden h-full flex flex-col">
                   {/* Background decoration */}
                   <div
                     className={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl ${item.color} opacity-10 rounded-full -translate-y-12 translate-x-12`}
@@ -195,7 +195,7 @@ export default function PhuongThucSection() {
                       {item.desc}
                     </p>
 
-                    <div className="space-y-3">
+                    <div className="space-y-3 flex-1 flex flex-col justify-end">
                       {item.features.map((feature, featureIndex) => (
                         <div
                           key={featureIndex}

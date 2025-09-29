@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Handshake, Globe, Heart, Star } from "lucide-react";
+import Image from "next/image";
 
 export default function MatTranSection() {
   const timelineItems = [
@@ -113,15 +114,13 @@ export default function MatTranSection() {
                       <div className="flex flex-col lg:flex-row h-full">
                         {/* Image section - Side by side */}
                         <div className="relative w-full lg:w-1/2 h-64 lg:h-auto overflow-hidden">
-                          <img
+                          <Image
                             src={item.media?.source?.url || '/placeholder-timeline.jpg'}
                             alt={item.cardTitle}
+                            width={400}
+                            height={300}
                             className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                             loading="lazy"
-                            onError={(e) => {
-                              // Fallback to placeholder if image fails to load
-                              e.currentTarget.src = '/placeholder-timeline.jpg';
-                            }}
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                         </div>
@@ -149,7 +148,7 @@ export default function MatTranSection() {
         </div>
 
         {/* Nguyên tắc tổ chức */}
-        <div className="mt-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <h4 className="text-2xl md:text-3xl font-bold text-center text-[#D32F2F] mb-12">
             Nguyên tắc tổ chức
           </h4>
@@ -162,8 +161,8 @@ export default function MatTranSection() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <div className="backdrop-blur-sm bg-white/70 border border-white/20 rounded-3xl p-8 shadow-2xl max-w-4xl mx-auto">
-              <p className="text-lg text-gray-700 leading-relaxed">
+            <div className="max-w-4xl mx-auto">
+              <p className="text-xl text-black leading-relaxed">
                 Hồ Chí Minh đề ra một số nguyên tắc cơ bản để Mặt trận hoạt động hiệu quả,
                 đảm bảo sự đoàn kết bền vững và phát huy sức mạnh toàn dân tộc.
               </p>

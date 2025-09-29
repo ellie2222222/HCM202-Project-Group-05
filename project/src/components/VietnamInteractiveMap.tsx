@@ -19,31 +19,6 @@ export default function VietnamInteractiveMap() {
 
   const regions = [
     {
-      id: "north",
-      name: "Miền Bắc",
-      position: { x: 51, y: 21 },
-      color: "#D32F2F",
-      forces: [
-        {
-          name: "Công nhân công nghiệp",
-          icon: Factory,
-          fact: "Lực lượng tiên phong trong cách mạng",
-        },
-        {
-          name: "Trí thức",
-          icon: GraduationCap,
-          fact: "Đóng góp tri thức và văn hóa",
-        },
-        {
-          name: "Cán bộ nhà nước",
-          icon: Building,
-          fact: "Xây dựng bộ máy chính quyền",
-        },
-        { name: "Sinh viên", icon: GraduationCap, fact: "Thế hệ trẻ yêu nước" },
-      ],
-      description: "Trung tâm chính trị, kinh tế và văn hóa của cả nước",
-    },
-    {
       id: "central",
       name: "Miền Trung",
       position: { x: 57, y: 41 },
@@ -67,6 +42,31 @@ export default function VietnamInteractiveMap() {
         },
       ],
       description: "Vùng đất anh hùng, nơi sinh ra nhiều anh hùng dân tộc",
+    },
+    {
+      id: "north",
+      name: "Miền Bắc",
+      position: { x: 51, y: 21 },
+      color: "#D32F2F",
+      forces: [
+        {
+          name: "Công nhân công nghiệp",
+          icon: Factory,
+          fact: "Lực lượng tiên phong trong cách mạng",
+        },
+        {
+          name: "Trí thức",
+          icon: GraduationCap,
+          fact: "Đóng góp tri thức và văn hóa",
+        },
+        {
+          name: "Cán bộ nhà nước",
+          icon: Building,
+          fact: "Xây dựng bộ máy chính quyền",
+        },
+        { name: "Sinh viên", icon: GraduationCap, fact: "Thế hệ trẻ yêu nước" },
+      ],
+      description: "Trung tâm chính trị, kinh tế và văn hóa của cả nước",
     },
     {
       id: "highlands",
@@ -217,7 +217,12 @@ export default function VietnamInteractiveMap() {
                   </div>
 
                   {/* Enhanced Tooltip with Forces */}
-                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none" style={{ zIndex: 9999 }}>
+                  <div className={`absolute opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none ${region.id === "north"
+                    ? "top-full mt-3 left-1/2 transform -translate-x-1/2"
+                    : region.id === "central"
+                      ? "right-full mr-3 top-1/2 transform -translate-y-1/2"
+                      : "bottom-full mb-3 left-1/2 transform -translate-x-1/2"
+                    }`} style={{ zIndex: 9999 }}>
                     <div className="bg-white/95 backdrop-blur-sm rounded-xl shadow-2xl p-4 border border-gray-200 min-w-[280px] max-w-[320px]">
                       <div className="text-lg font-bold text-gray-800 mb-2">
                         {region.name}
@@ -241,7 +246,12 @@ export default function VietnamInteractiveMap() {
                         </div>
                       </div>
                     </div>
-                    <div className="w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-white/95 mx-auto"></div>
+                    <div className={`w-0 h-0 mx-auto ${region.id === "north"
+                      ? "border-l-4 border-r-4 border-b-4 border-transparent border-b-white/95"
+                      : region.id === "central"
+                        ? "border-t-4 border-b-4 border-l-4 border-transparent border-l-white/95"
+                        : "border-l-4 border-r-4 border-t-4 border-transparent border-t-white/95"
+                      }`}></div>
                   </div>
                 </motion.div>
               ))}
@@ -255,7 +265,7 @@ export default function VietnamInteractiveMap() {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="bg-gradient-to-r from-[#D32F2F] to-[#FFD700] rounded-2xl p-6 text-white h-full flex flex-col"
+            className="bg-gradient-to-r from-red-600 to-red-800 rounded-2xl p-6 text-white h-full flex flex-col"
           >
             <h3 className="text-2xl font-bold text-center mb-6">
               Khối đại đoàn kết toàn dân tộc
@@ -266,25 +276,30 @@ export default function VietnamInteractiveMap() {
             </p>
 
             <div className="space-y-4 flex-1">
-              <div className="bg-white/20 rounded-xl p-4 text-center backdrop-blur-sm">
-                <Users className="w-10 h-10 mx-auto mb-3" />
-                <div className="text-lg font-bold mb-1">Toàn quốc</div>
-                <div className="text-sm opacity-90">Từ Bắc chí Nam</div>
+              <div className="bg-white/20 rounded-xl p-4 backdrop-blur-sm">
+                <div className="text-lg font-bold mb-3 text-center">Chủ thể khối đại đoàn kết toàn dân tộc</div>
+                <div className="text-base opacity-90 leading-relaxed space-y-2">
+                  <div>Theo Hồ Chí Minh, chủ thể là toàn thể nhân dân Việt Nam yêu nước, không phân biệt giai cấp, dân tộc, giới tính, tôn giáo, nghề nghiệp, xu hướng chính trị, kể cả người Việt ở nước ngoài.</div>
+                  <div className="mt-2 text-md italic">Ý nghĩa: Là tập hợp đông đảo quần chúng và lực lượng nòng cốt xây dựng đất nước.</div>
+                </div>
               </div>
-              <div className="bg-white/20 rounded-xl p-4 text-center backdrop-blur-sm">
-                <Heart className="w-10 h-10 mx-auto mb-3" />
-                <div className="text-lg font-bold mb-1">Đa dân tộc</div>
-                <div className="text-sm opacity-90">Anh em một nhà</div>
+              <div className="bg-white/20 rounded-xl p-4 backdrop-blur-sm">
+                <div className="text-lg font-bold mb-3 text-center">Nền tảng khối đại đoàn kết</div>
+                <div className="text-base opacity-90 leading-relaxed space-y-2">
+                  <div>Công - nông - trí thức là nền tảng cơ bản, đóng vai trò quyết định, làm cơ sở mở rộng đoàn kết với các tầng lớp khác.</div>
+
+                  Hồ Chí Minh nhấn mạnh:
+                  <div className="mt-2 p-2 bg-white/10 rounded-lg text-md italic">&ldquo;Đoàn kết dựa trên công nhân, nông dân, trí thức, rồi mở rộng để tăng sức mạnh.&rdquo;</div>
+                </div>
               </div>
-              <div className="bg-white/20 rounded-xl p-4 text-center backdrop-blur-sm">
-                <Globe className="w-10 h-10 mx-auto mb-3" />
-                <div className="text-lg font-bold mb-1">Toàn dân</div>
-                <div className="text-sm opacity-90">Một lòng yêu nước</div>
-              </div>
-              <div className="bg-white/20 rounded-xl p-4 text-center backdrop-blur-sm">
-                <Building className="w-10 h-10 mx-auto mb-3" />
-                <div className="text-lg font-bold mb-1">Đoàn kết</div>
-                <div className="text-sm opacity-90">Sức mạnh vô địch</div>
+              <div className="bg-white/20 rounded-xl p-4 backdrop-blur-sm">
+                <div className="text-lg font-bold mb-3 text-center">Vai trò của Đảng Cộng sản Việt Nam</div>
+                <div className="text-base opacity-90 leading-relaxed">
+                  <div>Đảng vừa là một bộ phận trong khối đoàn kết, vừa là lực lượng lãnh đạo.
+                    <br />
+
+                    Đảng dẫn dắt, định hướng để các tầng lớp nhân dân cùng hành động vì mục tiêu chung..</div>
+                </div>
               </div>
             </div>
           </motion.div>
