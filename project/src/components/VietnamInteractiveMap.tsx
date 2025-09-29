@@ -21,7 +21,7 @@ export default function VietnamInteractiveMap() {
     {
       id: "north",
       name: "Miền Bắc",
-      position: { x: 50, y: 20 },
+      position: { x: 51, y: 21 },
       color: "#D32F2F",
       forces: [
         {
@@ -46,7 +46,7 @@ export default function VietnamInteractiveMap() {
     {
       id: "central",
       name: "Miền Trung",
-      position: { x: 55, y: 40 },
+      position: { x: 57, y: 41 },
       color: "#FF6B35",
       forces: [
         {
@@ -69,34 +69,9 @@ export default function VietnamInteractiveMap() {
       description: "Vùng đất anh hùng, nơi sinh ra nhiều anh hùng dân tộc",
     },
     {
-      id: "south",
-      name: "Miền Nam",
-      position: { x: 57, y: 73 },
-      color: "#4CAF50",
-      forces: [
-        {
-          name: "Doanh nhân",
-          icon: Building,
-          fact: "Phát triển kinh tế thị trường",
-        },
-        { name: "Công nhân", icon: Factory, fact: "Lực lượng sản xuất chính" },
-        {
-          name: "Nông dân",
-          icon: Users,
-          fact: "Sản xuất nông nghiệp hàng hóa",
-        },
-        {
-          name: "Trí thức",
-          icon: GraduationCap,
-          fact: "Nghiên cứu khoa học kỹ thuật",
-        },
-      ],
-      description: "Vùng đất trù phú, nơi hội tụ sức mạnh toàn dân",
-    },
-    {
       id: "highlands",
       name: "Tây Nguyên",
-      position: { x: 65, y: 58 },
+      position: { x: 67, y: 59 },
       color: "#9C27B0",
       forces: [
         {
@@ -119,30 +94,9 @@ export default function VietnamInteractiveMap() {
       description: "Vùng cao nguyên, nơi sinh sống của nhiều dân tộc anh em",
     },
     {
-      id: "mekong",
-      name: "Đồng bằng sông Cửu Long",
-      position: { x: 48, y: 80 },
-      color: "#FF9800",
-      forces: [
-        { name: "Nông dân", icon: Users, fact: "Sản xuất lúa gạo chủ yếu" },
-        { name: "Ngư dân", icon: Globe, fact: "Khai thác thủy sản phong phú" },
-        {
-          name: "Công nhân chế biến",
-          icon: Factory,
-          fact: "Chế biến nông thủy sản",
-        },
-        {
-          name: "Doanh nhân nông nghiệp",
-          icon: Building,
-          fact: "Phát triển nông nghiệp công nghệ cao",
-        },
-      ],
-      description: "Vựa lúa của cả nước, nơi sản xuất nông nghiệp chủ yếu",
-    },
-    {
       id: "coastal",
       name: "Duyên hải Nam Trung Bộ",
-      position: { x: 71, y: 65 },
+      position: { x: 75, y: 67 },
       color: "#2196F3",
       forces: [
         { name: "Ngư dân", icon: Globe, fact: "Đánh bắt hải sản xa bờ" },
@@ -160,86 +114,180 @@ export default function VietnamInteractiveMap() {
       ],
       description: "Vùng biển đảo, nơi có nhiều cảng biển quan trọng",
     },
+    {
+      id: "south",
+      name: "Miền Nam",
+      position: { x: 61, y: 76 },
+      color: "#4CAF50",
+      forces: [
+        {
+          name: "Doanh nhân",
+          icon: Building,
+          fact: "Phát triển kinh tế thị trường",
+        },
+        { name: "Công nhân", icon: Factory, fact: "Lực lượng sản xuất chính" },
+        {
+          name: "Nông dân",
+          icon: Users,
+          fact: "Sản xuất nông nghiệp hàng hóa",
+        },
+        {
+          name: "Trí thức",
+          icon: GraduationCap,
+          fact: "Nghiên cứu khoa học kỹ thuật",
+        },
+      ],
+      description: "Vùng đất trù phú, nơi hội tụ sức mạnh toàn dân",
+    },
+    {
+      id: "mekong",
+      name: "Đồng bằng sông Cửu Long",
+      position: { x: 50, y: 81 },
+      color: "#FF9800",
+      forces: [
+        { name: "Nông dân", icon: Users, fact: "Sản xuất lúa gạo chủ yếu" },
+        { name: "Ngư dân", icon: Globe, fact: "Khai thác thủy sản phong phú" },
+        {
+          name: "Công nhân chế biến",
+          icon: Factory,
+          fact: "Chế biến nông thủy sản",
+        },
+        {
+          name: "Doanh nhân nông nghiệp",
+          icon: Building,
+          fact: "Phát triển nông nghiệp công nghệ cao",
+        },
+      ],
+      description: "Vựa lúa của cả nước, nơi sản xuất nông nghiệp chủ yếu",
+    },
   ];
 
   return (
     <div className="w-full h-full">
-      {/* Interactive Map */}
-      <div className="relative h-full bg-gradient-to-br from-blue-50 to-green-50 rounded-2xl p-8 mb-8 overflow-hidden">
-        <div className="relative w-full h-[1200px] rounded-xl overflow-hidden flex justify-center items-center">
-          {/* Vietnam Map Background - Fixed Non-Responsive */}
-          <div
-            className="relative"
-            style={{ width: "800px", height: "1000px" }}
-          >
-            <Image
-              src="/vietnam-map-1.jpg"
-              alt="Bản đồ Việt Nam"
-              width={800}
-              height={1000}
-              className="w-full h-full"
-              priority
-            />
-            {/* Clean overlay to make pins visible */}
-            <div className="absolute inset-0 bg-gradient-to-br from-black/10 via-transparent to-black/20"></div>
+      {/* Main Content Layout */}
+      <div className="flex flex-col lg:flex-row gap-8 h-full">
+        {/* Interactive Map */}
+        <div className="lg:w-3/5 bg-gradient-to-br from-blue-50 to-green-50 rounded-2xl overflow-hidden h-full">
+          <div className="relative w-full h-full rounded-xl overflow-hidden flex justify-center items-center">
+            {/* Vietnam Map Background - Full Background */}
+            <div className="relative w-full h-full">
+              <Image
+                src="/vietnam-map-1.jpg"
+                alt="Bản đồ Việt Nam"
+                width={800}
+                height={1000}
+                className="w-full h-full object-cover"
+                priority
+              />
+              {/* Clean overlay to make pins visible */}
+              <div className="absolute inset-0 bg-gradient-to-br from-black/10 via-transparent to-black/20"></div>
 
-            {/* Decorative Elements */}
-            <div className="absolute top-6 left-6 text-3xl font-bold text-white drop-shadow-lg">
-              VIỆT NAM
+              {/* Decorative Elements */}
+              <div className="absolute top-6 left-6 text-3xl font-bold text-white drop-shadow-lg">
+                VIỆT NAM
+              </div>
+              <div className="absolute bottom-6 right-6 text-lg text-white drop-shadow-lg font-medium">
+                Khối đại đoàn kết toàn dân tộc
+              </div>
+
+              {/* Region Pins */}
+              {regions.map((region, index) => (
+                <motion.div
+                  key={region.id}
+                  className="absolute transform -translate-x-1/2 -translate-y-1/2 group"
+                  style={{
+                    left: `${region.position.x}%`,
+                    top: `${region.position.y}%`,
+                    zIndex: 10 + index,
+                  }}
+                  whileHover={{}}
+                >
+                  <div className="relative">
+                    {/* Pin Shadow */}
+                    <div className="absolute top-0.5 left-0.5 w-6 h-6 bg-black/20 rounded-full blur-sm"></div>
+                    {/* Main Pin */}
+                    <div className="relative bg-white rounded-full p-1.5 shadow-lg border-2 border-white">
+                      <MapPin
+                        className="w-5 h-5"
+                        style={{ color: region.color }}
+                      />
+                    </div>
+                    {/* Pulsing Ring */}
+                    <div className="absolute -top-1 -left-1 w-7 h-7 border-2 border-white rounded-full animate-ping opacity-75"></div>
+                  </div>
+
+                  {/* Enhanced Tooltip with Forces */}
+                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none" style={{ zIndex: 9999 }}>
+                    <div className="bg-white/95 backdrop-blur-sm rounded-xl shadow-2xl p-4 border border-gray-200 min-w-[280px] max-w-[320px]">
+                      <div className="text-lg font-bold text-gray-800 mb-2">
+                        {region.name}
+                      </div>
+                      <div className="text-sm text-gray-600 mb-3">
+                        {region.description}
+                      </div>
+
+                      {/* Forces List */}
+                      <div className="space-y-2">
+                        <div className="text-sm font-semibold text-gray-700 mb-2">
+                          Lực lượng chính:
+                        </div>
+                        <div className="grid grid-cols-2 gap-2">
+                          {region.forces.map((force, index) => (
+                            <div key={index} className="flex items-center space-x-2 text-xs">
+                              <force.icon className="w-4 h-4 text-[#D32F2F] flex-shrink-0" />
+                              <span className="text-gray-600">{force.name}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-white/95 mx-auto"></div>
+                  </div>
+                </motion.div>
+              ))}
             </div>
-            <div className="absolute bottom-6 right-6 text-lg text-white drop-shadow-lg font-medium">
-              Khối đại đoàn kết toàn dân tộc
-            </div>
-
-            {/* Region Pins */}
-            {regions.map((region) => (
-              <motion.button
-                key={region.id}
-                className="absolute transform -translate-x-1/2 -translate-y-1/2 group"
-                style={{
-                  left: `${region.position.x}%`,
-                  top: `${region.position.y}%`,
-                }}
-                onClick={() => setSelectedRegion(region.id)}
-                whileHover={{ scale: 1.3 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <div className="relative">
-                  {/* Pin Shadow */}
-                  <div className="absolute top-1 left-1 w-10 h-10 bg-black/20 rounded-full blur-sm"></div>
-                  {/* Main Pin */}
-                  <div className="relative bg-white rounded-full p-2 shadow-xl border-2 border-white">
-                    <MapPin
-                      className="w-8 h-8"
-                      style={{ color: region.color }}
-                    />
-                  </div>
-                  {/* Pulsing Ring */}
-                  <div className="absolute -top-2 -left-2 w-12 h-12 border-2 border-white rounded-full animate-ping opacity-75"></div>
-                  {/* Notification Badge */}
-                  <div className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full border-2 border-white flex items-center justify-center">
-                    <div className="w-2 h-2 bg-white rounded-full"></div>
-                  </div>
-                </div>
-
-                {/* Enhanced Tooltip */}
-                <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-3 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none z-20">
-                  <div className="bg-white/95 backdrop-blur-sm rounded-xl shadow-2xl p-4 whitespace-nowrap border border-gray-200 min-w-[200px]">
-                    <div className="text-lg font-bold text-gray-800 mb-1">
-                      {region.name}
-                    </div>
-                    <div className="text-sm text-gray-600 mb-2">
-                      {region.description}
-                    </div>
-                    <div className="text-xs text-gray-500">
-                      Click để xem chi tiết
-                    </div>
-                  </div>
-                  <div className="w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-white/95 mx-auto"></div>
-                </div>
-              </motion.button>
-            ))}
           </div>
+        </div>
+
+        {/* Historical Summary Sidebar */}
+        <div className="lg:w-3/5">
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="bg-gradient-to-r from-[#D32F2F] to-[#FFD700] rounded-2xl p-6 text-white h-full flex flex-col"
+          >
+            <h3 className="text-2xl font-bold text-center mb-6">
+              Khối đại đoàn kết toàn dân tộc
+            </h3>
+            <p className="text-lg text-center mb-8 opacity-90">
+              Từ miền núi đến đồng bằng, từ biển đảo đến đất liền, toàn thể nhân dân
+              Việt Nam đoàn kết một lòng xây dựng đất nước.
+            </p>
+
+            <div className="space-y-4 flex-1">
+              <div className="bg-white/20 rounded-xl p-4 text-center backdrop-blur-sm">
+                <Users className="w-10 h-10 mx-auto mb-3" />
+                <div className="text-lg font-bold mb-1">Toàn quốc</div>
+                <div className="text-sm opacity-90">Từ Bắc chí Nam</div>
+              </div>
+              <div className="bg-white/20 rounded-xl p-4 text-center backdrop-blur-sm">
+                <Heart className="w-10 h-10 mx-auto mb-3" />
+                <div className="text-lg font-bold mb-1">Đa dân tộc</div>
+                <div className="text-sm opacity-90">Anh em một nhà</div>
+              </div>
+              <div className="bg-white/20 rounded-xl p-4 text-center backdrop-blur-sm">
+                <Globe className="w-10 h-10 mx-auto mb-3" />
+                <div className="text-lg font-bold mb-1">Toàn dân</div>
+                <div className="text-sm opacity-90">Một lòng yêu nước</div>
+              </div>
+              <div className="bg-white/20 rounded-xl p-4 text-center backdrop-blur-sm">
+                <Building className="w-10 h-10 mx-auto mb-3" />
+                <div className="text-lg font-bold mb-1">Đoàn kết</div>
+                <div className="text-sm opacity-90">Sức mạnh vô địch</div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
 
@@ -365,44 +413,6 @@ export default function VietnamInteractiveMap() {
         )}
       </AnimatePresence>
 
-      {/* Historical Summary */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="bg-gradient-to-r from-[#D32F2F] to-[#FFD700] rounded-2xl p-8 text-white"
-      >
-        <h3 className="text-3xl font-bold text-center mb-6">
-          Khối đại đoàn kết toàn dân tộc
-        </h3>
-        <p className="text-xl text-center mb-8 opacity-90">
-          Từ miền núi đến đồng bằng, từ biển đảo đến đất liền, toàn thể nhân dân
-          Việt Nam đoàn kết một lòng xây dựng đất nước.
-        </p>
-
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          <div className="bg-white/20 rounded-xl p-6 text-center backdrop-blur-sm">
-            <Users className="w-12 h-12 mx-auto mb-3" />
-            <div className="text-lg font-bold mb-1">Toàn quốc</div>
-            <div className="text-sm opacity-90">Từ Bắc chí Nam</div>
-          </div>
-          <div className="bg-white/20 rounded-xl p-6 text-center backdrop-blur-sm">
-            <Heart className="w-12 h-12 mx-auto mb-3" />
-            <div className="text-lg font-bold mb-1">Đa dân tộc</div>
-            <div className="text-sm opacity-90">Anh em một nhà</div>
-          </div>
-          <div className="bg-white/20 rounded-xl p-6 text-center backdrop-blur-sm">
-            <Globe className="w-12 h-12 mx-auto mb-3" />
-            <div className="text-lg font-bold mb-1">Toàn dân</div>
-            <div className="text-sm opacity-90">Một lòng yêu nước</div>
-          </div>
-          <div className="bg-white/20 rounded-xl p-6 text-center backdrop-blur-sm">
-            <Building className="w-12 h-12 mx-auto mb-3" />
-            <div className="text-lg font-bold mb-1">Đoàn kết</div>
-            <div className="text-sm opacity-90">Sức mạnh vô địch</div>
-          </div>
-        </div>
-      </motion.div>
     </div>
   );
 }

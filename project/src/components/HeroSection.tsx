@@ -92,15 +92,12 @@ export default function HeroSection({ onExploreClick }: HeroSectionProps) {
 
         {/* Main Title with Enhanced Typography */}
         <motion.div variants={itemVariants} className="mb-4">
-          <h2 className="text-4xl md:text-6xl lg:text-7xl font-black leading-none mb-4">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-none mb-4">
             <span className="block bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-200 bg-clip-text text-transparent drop-shadow-2xl">
               Đại Đoàn Kết
             </span>
             <span className="block text-2xl md:text-4xl lg:text-5xl font-bold text-white mt-4 drop-shadow-lg">
-              Nền Tảng Sức Mạnh
-            </span>
-            <span className="block bg-gradient-to-r from-red-300 via-red-200 to-yellow-200 bg-clip-text text-transparent text-2xl md:text-4xl lg:text-5xl font-bold mt-2">
-              Dân Tộc
+              Nền Tảng Sức Mạnh Dân Tộc
             </span>
           </h2>
 
@@ -118,6 +115,7 @@ export default function HeroSection({ onExploreClick }: HeroSectionProps) {
               tư tưởng Hồ Chí Minh
             </span>{" "}
             về đoàn kết toàn dân tộc và{" "}
+            <br />
             <span className="text-red-200 font-semibold">
               bài học cho hiện tại
             </span>
@@ -171,24 +169,6 @@ export default function HeroSection({ onExploreClick }: HeroSectionProps) {
           variants={itemVariants}
           className="flex flex-col items-center gap-6"
         >
-          <motion.button
-            onClick={onExploreClick}
-            className="group relative px-12 py-5 bg-gradient-to-r from-yellow-400 to-yellow-500 text-red-800 rounded-full text-xl font-bold transition-all duration-300 shadow-2xl hover:shadow-yellow-400/25 border-2 border-yellow-400"
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            <span className="relative z-10 flex items-center gap-3">
-              <Flag className="w-6 h-6" />
-              Khám phá ngay
-              <motion.div
-                animate={{ x: [0, 4, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              >
-                →
-              </motion.div>
-            </span>
-            <div className="absolute inset-0 bg-gradient-to-r from-yellow-300 to-yellow-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          </motion.button>
 
           {/* Scroll Indicator */}
           <motion.div

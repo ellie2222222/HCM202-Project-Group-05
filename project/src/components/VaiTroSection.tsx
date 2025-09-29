@@ -97,6 +97,7 @@ export default function VaiTroSection() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
+              whileHover={{ scale: 1.02, y: -5 }}
               className="group relative"
             >
               <div className="bg-white rounded-2xl p-8 shadow-xl transition-all duration-300 border border-red-100 hover:shadow-2xl hover:border-[#D32F2F]/30 space-y-6 relative overflow-hidden h-full">

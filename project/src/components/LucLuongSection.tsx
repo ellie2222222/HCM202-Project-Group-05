@@ -19,11 +19,70 @@ export default function LucLuongSection() {
 
         {/* Vietnam Interactive Map */}
         <div className="mb-16">
-          <h3 className="text-2xl font-bold text-center text-[#D32F2F] mb-8">
-            Bản đồ tương tác các lực lượng theo vùng miền
-          </h3>
           <VietnamInteractiveMap />
         </div>
+
+        {/* Chủ thể và nền tảng */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="mb-16"
+        >
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            {/* Chủ thể */}
+            <div className="bg-gradient-to-br from-red-50 to-orange-50 rounded-2xl p-8 shadow-xl border border-red-100">
+              <h3 className="text-2xl font-bold text-[#D32F2F] mb-6 text-center">
+                1. Chủ thể của khối đại đoàn kết toàn dân tộc
+              </h3>
+              <div className="space-y-4">
+                <p className="text-gray-700 leading-relaxed">
+                  <strong>Theo Hồ Chí Minh, chủ thể bao gồm:</strong>
+                </p>
+                <div className="bg-white/70 rounded-xl p-4 border-l-4 border-[#D32F2F]">
+                  <p className="text-gray-800 font-semibold mb-3">
+                    Toàn thể nhân dân Việt Nam yêu nước
+                  </p>
+                  <div className="space-y-2 text-sm text-gray-600">
+                    <p>• Không phân biệt giai cấp, tầng lớp xã hội</p>
+                    <p>• Không phân biệt dân tộc, giới tính, tôn giáo</p>
+                    <p>• Không phân biệt nghề nghiệp, xu hướng chính trị</p>
+                    <p>• Kể cả người Việt Nam ở nước ngoài</p>
+                  </div>
+                </div>
+                <p className="text-sm text-gray-600 italic">
+                  <strong>Ý nghĩa:</strong> Tất cả đều là một phần của khối đại đoàn kết, vừa là một tập hợp đông đảo quần chúng, vừa là lực lượng nòng cốt để xây dựng đất nước.
+                </p>
+              </div>
+            </div>
+
+            {/* Nền tảng */}
+            <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-8 shadow-xl border border-blue-100">
+              <h3 className="text-2xl font-bold text-[#D32F2F] mb-6 text-center">
+                2. Nền tảng của khối đại đoàn kết toàn dân tộc
+              </h3>
+              <div className="space-y-4">
+                <div className="bg-white/70 rounded-xl p-4 border-l-4 border-blue-500">
+                  <p className="text-gray-800 font-semibold mb-3">
+                    Công - nông - trí thức là nền tảng cơ bản
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    Đây là lực lượng có vai trò quyết định, làm cơ sở để mở rộng đoàn kết với các tầng lớp, giai cấp khác.
+                  </p>
+                </div>
+                <div className="bg-gradient-to-r from-[#D32F2F] to-[#FFD700] rounded-xl p-4 text-white">
+                  <p className="font-semibold mb-2">Hồ Chí Minh nhấn mạnh:</p>
+                  <p className="text-sm italic">
+                    "Đoàn kết phải trước hết dựa trên công nhân, nông dân và trí thức."
+                  </p>
+                </div>
+                <p className="text-sm text-gray-600">
+                  Sau đó mở rộng sang các lực lượng khác để tăng cường sức mạnh. Tôn trọng sự khác biệt về quan điểm, nhưng thống nhất về mục tiêu chung.
+                </p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
 
         {/* Các nhóm lực lượng chi tiết */}
         <motion.div
