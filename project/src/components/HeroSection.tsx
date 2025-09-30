@@ -55,7 +55,7 @@ export default function HeroSection({ onExploreClick }: HeroSectionProps) {
   };
 
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative my-10  py-5 h-screen flex items-center justify-center overflow-hidden ">
       {/* Dynamic Background with Parallax Effect */}
       <div className="absolute inset-0">
         {/* Background Image Layer */}
@@ -114,8 +114,7 @@ export default function HeroSection({ onExploreClick }: HeroSectionProps) {
             <span className="text-yellow-300 font-semibold">
               tư tưởng Hồ Chí Minh
             </span>{" "}
-            về đoàn kết toàn dân tộc và{" "}
-            <br />
+            về đoàn kết toàn dân tộc và <br />
             <span className="text-red-200 font-semibold">
               bài học cho hiện tại
             </span>
@@ -169,7 +168,6 @@ export default function HeroSection({ onExploreClick }: HeroSectionProps) {
           variants={itemVariants}
           className="flex flex-col items-center gap-6"
         >
-
           {/* Scroll Indicator */}
           <motion.div
             className="mt-4 flex flex-col items-center gap-2 text-white/70 cursor-pointer"

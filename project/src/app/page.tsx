@@ -14,7 +14,7 @@ import CQ7 from "@/components/CQ7";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState<string>("");
-  
+
   const sections = {
     "vai-tro": useRef<HTMLDivElement>(null),
     "luc-luong": useRef<HTMLDivElement>(null),
@@ -35,20 +35,20 @@ export default function Home() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 100; // Offset for header height
-      
+
       // Check each section to see which one is currently in view
       Object.entries(sections).forEach(([sectionId, ref]) => {
         if (ref.current) {
           const element = ref.current;
           const elementTop = element.offsetTop;
           const elementBottom = elementTop + element.offsetHeight;
-          
+
           if (scrollPosition >= elementTop && scrollPosition < elementBottom) {
             setActiveSection(sectionId);
           }
         }
       });
-      
+
       // If scrolled to top, clear active section
       if (window.scrollY < 50) {
         setActiveSection("");
@@ -56,13 +56,13 @@ export default function Home() {
     };
 
     // Add scroll event listener
-    window.addEventListener('scroll', handleScroll);
-    
+    window.addEventListener("scroll", handleScroll);
+
     // Initial check
     handleScroll();
-    
+
     // Cleanup
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [sections]);
 
   return (
@@ -74,7 +74,9 @@ export default function Home() {
       <Header onNavClick={scrollToSection} activeSection={activeSection} />
 
       {/* Hero Section with Background Image */}
-      <HeroSection onExploreClick={() => scrollToSection("vai-tro")} />
+      <div className="py-10">
+        <HeroSection onExploreClick={() => scrollToSection("vai-tro")} />
+      </div>
 
       {/* Vai trò Section */}
       <div ref={sections["vai-tro"]}>
